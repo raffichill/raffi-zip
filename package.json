@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "live-server"
+    "dev": "vite --host 127.0.0.1 --port 8080"
   },
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "vite": "^6.4.5"
   },
   "dependencies": {
     "corner-smoothing": "^0.1.5",
     "motion": "^12.7.4"
+  },
+  "engines": {
+    "node": ">=22.23.4 <23 || >=24.22.1 <25 || >=26.12.1 <27"
   }
 }
