@@ -38,6 +38,12 @@
                 text-underline-offset: 3px;
                 text-decoration-color: #999;
             }
+            /* The 2025 site is a desktop-only concept */
+            @media (max-width: 767px), (pointer: coarse) {
+                .desktop-only {
+                    display: none;
+                }
+            }
         </style>
     </head>
     <body>
@@ -46,7 +52,7 @@
             <a href="https://www.spottedinprod.com" data-ios="https://apps.apple.com/us/app/spotted-in-prod/id6821736054">Spotted in Prod</a>
             <a href="https://www.runbuds.app" data-ios="https://apps.apple.com/us/app/runbuds/id6744413545">Runbuds</a>
             <a href="https://apps.apple.com/us/app/floatydo/id6760775568">FloatyDo</a>
-            <a href="/2025">2025</a>
+            <a href="/2025" class="desktop-only">2025</a>
         </nav>
         <script>
             // iPhone/iPad visitors go straight to the App Store; everyone else gets the landing page.
