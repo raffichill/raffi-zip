@@ -45,7 +45,14 @@
                 bottom: 32px;
                 display: flex;
                 gap: 16px;
+            }
+            footer a {
                 opacity: 0.5;
+                transition: opacity 120ms ease-out;
+            }
+            footer a:hover,
+            footer a:focus-visible {
+                opacity: 1;
             }
             /* The 2025 site is a desktop-only concept */
             @media (max-width: 767px), (pointer: coarse) {
