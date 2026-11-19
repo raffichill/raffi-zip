@@ -1,0 +1,2493 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+        <title>Raffi Chilingaryan</title>
+        <meta
+            name="description"
+            content="Founder of Spotted in Prod, building apps and featuring great iOS apps."
+        />
+
+        <!-- Open Graph (Facebook, LinkedIn, iMessage, etc.) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Raffi Chilingaryan" />
+        <meta
+            property="og:description"
+            content="Founder of Spotted in Prod, building apps and featuring great iOS apps."
+        />
+        <meta
+            property="og:image"
+            content="https://raffi.town/assets/cover-image.png"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://raffi.town" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Raffi Chilingaryan" />
+        <meta
+            name="twitter:description"
+            content="Founder of Spotted in Prod, building apps and featuring great iOS apps."
+        />
+        <meta
+            name="twitter:image"
+            content="https://raffi.town/assets/cover-image.png"
+        />
+        <meta name="twitter:site" content="@raffichill" />
+
+        <link rel="icon" type="image/png" href="/assets/favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/favicon.png" />
+        <!-- Preconnect to font server early -->
+        <link rel="preconnect" href="https://rsms.me/" crossorigin />
+        <!-- Preload the Inter font CSS -->
+        <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" />
+        <!-- Preload the variable font file -->
+        <link
+            rel="preload"
+            href="https://rsms.me/inter/font-files/InterVariable.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+        />
+        <!-- Load font stylesheet -->
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+        <!-- Preload critical assets -->
+        <link
+            rel="preload"
+            href="/assets/phone-mockups/home-desktop.jpg"
+            as="image"
+        />
+        <link rel="preload" href="/assets/favicon.png" as="image" />
+        <link rel="stylesheet" href="/2025/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/motion@12.7.4/dist/motion.js"></script>
+    </head>
+    <body>
+        <!-- Desktop View -->
+        <div class="desktop-view">
+            <div class="main-container">
+                <!-- Phone Mockup with Tap Targets -->
+                <div class="phone-container">
+                    <div class="phone-frame">
+                        <!-- Inner shadow overlay - squircle ring with gradient glow -->
+                        <div class="phone-inner-shadow"></div>
+
+                        <!-- Bezel overlay - sits on top to mask video corners with squircle -->
+                        <div class="phone-bezel-overlay"></div>
+
+                        <!-- Black backdrop - stays fixed, never scales -->
+                        <div class="sheet-bg"></div>
+
+                        <!-- Clipping container for sheet transitions (this scales) -->
+                        <div class="phone-screen">
+                            <!-- Phone mockup background image -->
+                            <img
+                                src="/assets/phone-mockups/home-desktop.jpg"
+                                alt="Home Screen"
+                                class="phone-mockup-image"
+                            />
+                        </div>
+
+                        <!-- Dynamic Island (outside phone-screen to persist over videos) -->
+                        <div class="dynamic-island"></div>
+
+                        <!-- Video sheets (above tap targets, outside phone-screen for z-index) -->
+                        <video
+                            class="video-sheet"
+                            data-app="retro"
+                            src="/assets/videos/retro.mp4"
+                            poster="/assets/video-posters/retro.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="notes"
+                            src="/assets/videos/notes.mp4"
+                            poster="/assets/video-posters/notes.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="photos"
+                            src="/assets/videos/photos.mp4"
+                            poster="/assets/video-posters/photos.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="notboringcamera"
+                            src="/assets/videos/notboringcamera.mp4"
+                            poster="/assets/video-posters/notboringcamera.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="googlemaps"
+                            src="/assets/videos/googlemaps.mp4"
+                            poster="/assets/video-posters/googlemaps.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="claude"
+                            src="/assets/videos/claude.mp4"
+                            poster="/assets/video-posters/claude.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="safari"
+                            src="/assets/videos/safari.mp4"
+                            poster="/assets/video-posters/safari.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="github"
+                            src="/assets/videos/github.mp4"
+                            poster="/assets/video-posters/github.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet"
+                            data-app="spotify"
+                            src="/assets/videos/spotify.mp4"
+                            poster="/assets/video-posters/spotify.jpg"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <!-- Dynamic video sheets for folder apps (two for crossfade) -->
+                        <video
+                            class="video-sheet folder-video"
+                            id="folder-video-a"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+                        <video
+                            class="video-sheet folder-video"
+                            id="folder-video-b"
+                            muted
+                            playsinline
+                            loop
+                        ></video>
+
+                        <!-- Invisible tap target overlays -->
+                        <div
+                            class="tap-target tap-widget-github"
+                            data-app="github"
+                        ></div>
+                        <div
+                            class="tap-target tap-widget-spotify"
+                            data-app="spotify"
+                        ></div>
+
+                        <div
+                            class="tap-target tap-app-1"
+                            data-app="retro"
+                        ></div>
+                        <div
+                            class="tap-target tap-app-2"
+                            data-app="notboringcamera"
+                        ></div>
+                        <div
+                            class="tap-target tap-app-3"
+                            data-app="googlemaps"
+                        ></div>
+                        <div
+                            class="tap-target tap-app-4"
+                            data-app="photos"
+                        ></div>
+
+                        <div
+                            class="tap-target tap-folder-vibes"
+                            data-folder="money"
+                        ></div>
+                        <div
+                            class="tap-target tap-folder-social"
+                            data-folder="work"
+                        ></div>
+                        <div
+                            class="tap-target tap-folder-health"
+                            data-folder="social"
+                        ></div>
+                        <div
+                            class="tap-target tap-folder-tools"
+                            data-folder="vibes"
+                        ></div>
+
+                        <div
+                            class="tap-target tap-dock-1"
+                            data-app="claude"
+                        ></div>
+                        <div
+                            class="tap-target tap-dock-2"
+                            data-app="safari"
+                        ></div>
+                        <div
+                            class="tap-target tap-dock-3"
+                            data-app="notes"
+                        ></div>
+                    </div>
+                </div>
+
+                <!-- Content Area (Right Column) -->
+                <div class="content-area">
+                    <div class="content-area-inner">
+                        <div class="content-header">
+                            <h1 id="intro-name" class="typewriter-target"></h1>
+                        </div>
+                        <div class="content-body">
+                            <div class="content-text">
+                                <p id="intro-p1" class="typewriter-target"></p>
+                                <p id="intro-p2" class="typewriter-target"></p>
+                                <p id="intro-p3" class="typewriter-target"></p>
+                            </div>
+                            <div class="social-icons intro-social-icons">
+                                <a
+                                    href="https://x.com/raffichill"
+                                    target="_blank"
+                                    class="social-icon"
+                                >
+                                    <img
+                                        src="/assets/social/x-icon.svg"
+                                        alt="X"
+                                    />
+                                </a>
+                                <a
+                                    href="https://instagram.com/raffichill"
+                                    target="_blank"
+                                    class="social-icon"
+                                >
+                                    <img
+                                        src="/assets/social/instagram-icon.svg"
+                                        alt="Instagram"
+                                    />
+                                </a>
+                                <a
+                                    href="https://github.com/raffichill"
+                                    target="_blank"
+                                    class="social-icon"
+                                >
+                                    <img
+                                        src="/assets/social/github-icon.svg"
+                                        alt="GitHub"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tablet View (text only, 451-920px) -->
+        <div class="tablet-view">
+            <div class="tablet-content">
+                <div class="content-header">
+                    <h1>Raffi Chilingaryan</h1>
+                </div>
+                <div class="content-body">
+                    <div class="content-text">
+                        <p>
+                            I'm the founder of
+                            <a
+                                href="https://x.com/spottedinprod"
+                                target="_blank"
+                                >Spotted in Prod</a
+                            >
+                            - a platform featuring great iOS apps and the
+                            developers behind them. I also build apps on my own
+                            and
+                            <a
+                                href="https://x.com/raffichill/status/1981370446974243270"
+                                target="_blank"
+                                >with friends</a
+                            >.
+                        </p>
+                        <p>
+                            Thanks for stopping by and feel free to
+                            <a href="mailto:raffi.chilingaryan@gmail.com"
+                                >get in touch.</a
+                            >
+                        </p>
+                    </div>
+                    <div class="social-icons">
+                        <a
+                            href="https://x.com/raffichill"
+                            target="_blank"
+                            class="social-icon"
+                        >
+                            <img src="/assets/social/x-icon.svg" alt="X" />
+                        </a>
+                        <a
+                            href="https://instagram.com/raffichill"
+                            target="_blank"
+                            class="social-icon"
+                        >
+                            <img
+                                src="/assets/social/instagram-icon.svg"
+                                alt="Instagram"
+                            />
+                        </a>
+                        <a
+                            href="https://github.com/raffichill"
+                            target="_blank"
+                            class="social-icon"
+                        >
+                            <img
+                                src="/assets/social/github-icon.svg"
+                                alt="GitHub"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile View -->
+        <div class="mobile-view">
+            <div class="mobile-content">
+                <div class="mobile-main">
+                    <h1 class="mobile-title">Raffi Chilingaryan</h1>
+
+                    <div class="mobile-body">
+                        <p class="mobile-paragraph">
+                            I'm the founder of
+                            <a
+                                href="https://x.com/spottedinprod"
+                                target="_blank"
+                                class="mobile-highlight"
+                                >Spotted in Prod</a
+                            >
+                            - a platform featuring great iOS apps and the
+                            developers behind them. I also build apps on my own
+                            and
+                            <a
+                                href="https://x.com/raffichill/status/1981370446974243270"
+                                target="_blank"
+                                class="mobile-highlight"
+                                >with friends</a
+                            >.
+                        </p>
+
+                        <p class="mobile-paragraph">
+                            Feel free to
+                            <a
+                                href="https://x.com/raffichill"
+                                target="_blank"
+                                class="mobile-highlight"
+                                >DM</a
+                            >
+                            or shoot me an
+                            <a
+                                href="mailto:raffi.chilingaryan@gmail.com"
+                                class="mobile-highlight"
+                                >email</a
+                            >
+                            if you want to get in touch.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mobile-social-icons">
+                    <a
+                        href="https://x.com/raffichill"
+                        target="_blank"
+                        class="mobile-social-icon"
+                    >
+                        <img src="/assets/social/x-icon.svg" alt="X" />
+                    </a>
+                    <a
+                        href="https://instagram.com/raffichill"
+                        target="_blank"
+                        class="mobile-social-icon"
+                    >
+                        <img
+                            src="/assets/social/instagram-icon.svg"
+                            alt="Instagram"
+                        />
+                    </a>
+                    <a
+                        href="https://github.com/raffichill"
+                        target="_blank"
+                        class="mobile-social-icon"
+                    >
+                        <img src="/assets/social/github-icon.svg" alt="GitHub" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Sampled colors (fallbacks match current screenshot)
+            let SCREEN_OVERLAY_COLOR = "rgba(43, 39, 31, 0.7)"; // #2B271F
+            let DOCK_OVERLAY_COLOR = "rgba(52, 46, 39, 0.7)"; // #342E27
+            let FRAME_GRADIENT_TOP = "#9C886E"; // fallback
+            let FRAME_GRADIENT_BOTTOM = "#7A6D5B"; // fallback
+
+            // Sample colors from the home screen screenshot
+            function sampleColorsFromScreenshot() {
+                const img = document.querySelector(".phone-mockup-image");
+                if (!img || !img.complete) return;
+
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
+                ctx.drawImage(img, 0, 0);
+
+                const w = canvas.width;
+                const h = canvas.height;
+
+                // Screen: sample from left edge, between widget rows (cleaner area)
+                const screenPixel = ctx.getImageData(
+                    8,
+                    Math.floor(h * 0.35),
+                    1,
+                    1,
+                ).data;
+                SCREEN_OVERLAY_COLOR = `rgba(${screenPixel[0]}, ${screenPixel[1]}, ${screenPixel[2]}, 0.7)`;
+
+                // Dock: sample from bottom-left corner of dock area (avoids icons)
+                const dockPixel = ctx.getImageData(
+                    80,
+                    Math.floor(h * 0.94),
+                    1,
+                    1,
+                ).data;
+                DOCK_OVERLAY_COLOR = `rgba(${dockPixel[0]}, ${dockPixel[1]}, ${dockPixel[2]}, 0.7)`;
+
+                // Frame gradient: sample from very top and bottom edges
+                const topPixel = ctx.getImageData(
+                    Math.floor(w * 0.5),
+                    2,
+                    1,
+                    1,
+                ).data;
+                const bottomPixel = ctx.getImageData(
+                    Math.floor(w * 0.5),
+                    h - 3,
+                    1,
+                    1,
+                ).data;
+                FRAME_GRADIENT_TOP = `rgb(${topPixel[0]}, ${topPixel[1]}, ${topPixel[2]})`;
+                FRAME_GRADIENT_BOTTOM = `rgb(${bottomPixel[0]}, ${bottomPixel[1]}, ${bottomPixel[2]})`;
+
+                // Apply frame gradient to CSS
+                const phoneFrame = document.querySelector(".phone-frame");
+                const bezelOverlay = document.querySelector(
+                    ".phone-bezel-overlay",
+                );
+                const frameGradient = `
+                    radial-gradient(100% 100% at 100% 100%, rgba(255, 0, 98, 0.02) 0%, rgba(0, 255, 255, 0) 100%),
+                    linear-gradient(167deg, ${FRAME_GRADIENT_TOP} 0%, ${FRAME_GRADIENT_BOTTOM} 100%)
+                `;
+                if (phoneFrame) {
+                    phoneFrame.style.background = frameGradient;
+                }
+                if (bezelOverlay) {
+                    bezelOverlay.style.background = frameGradient;
+                }
+            }
+
+            // App data structure based on Figma
+            const appData = {
+                apps: {
+                    retro: {
+                        name: "Retro",
+                        icon: "/assets/icons/retro.jpg",
+                        video: "/assets/videos/retro.mp4",
+                        qrCode: "/assets/qr-codes/retro.jpg",
+                        appStoreURL: "https://apps.apple.com/retro",
+                        longDescription:
+                            "I use Retro as a personal photo journal and try to get whoever I can to download it.\nYou can send people postcards directly from the app too isn't that cool?\n:D\nIt's just really good and wholesome idk what else to say. The best thing about Retro is that it makes me want to take more photos.",
+                    },
+                    notes: {
+                        name: "Notes",
+                        icon: "/assets/icons/notes.jpg",
+                        video: "/assets/videos/notes.mp4",
+                        qrCode: "/assets/qr-codes/notes.jpg",
+                        appStoreURL: "https://apps.apple.com/notes",
+                        longDescription:
+                            "My life runs on Apple Notes.\nEven my to-do list has fully ended up here and I've ditched Things as much as I love the product.\nI wish more people used shared Notes/Folders and if I could have one wish for 2026 it would be better table formatting.",
+                    },
+                    photos: {
+                        name: "Photos",
+                        icon: "/assets/icons/photos.jpg",
+                        video: "/assets/videos/photos.mp4",
+                        qrCode: "/assets/qr-codes/photos.jpg",
+                        appStoreURL: "https://apps.apple.com/photos",
+                        longDescription:
+                            "9.5/10 great app. Deep integrations with other apps like !Camera and Retro go hard and make up for usability issues which have recently improved. Mostly for chronicling my entire life, sending pics to friends, and cropping little screenshots of folders on my phone that I post to Twitter.",
+                    },
+                    notboringcamera: {
+                        name: "Not Boring Camera",
+                        icon: "/assets/icons/notboringcamera.jpg",
+                        video: "/assets/videos/notboringcamera.mp4",
+                        qrCode: "/assets/qr-codes/notboringcamera.jpg",
+                        appStoreURL: "https://apps.apple.com/notboringcamera",
+                        longDescription:
+                            "I've bounced between Stops, Soft, and !Camera over the past couple years as my action button but am currently using this guy.\nIt's still crazy to me how these little apps have gotten me so much more excited to capture moments in my life and be the person in the friend group that snaps pics.\nThere are so many more out there that I havent even tried (Halide, Dazzcam, Moment, the list goes on) but I just cant think of what more I would want and the UI craft is a big plus.",
+                    },
+                    claude: {
+                        name: "Claude",
+                        icon: "/assets/icons/claude.png",
+                        video: "/assets/videos/claude.mp4",
+                        qrCode: "/assets/qr-codes/claude.jpg",
+                        appStoreURL: "https://apps.apple.com/claude",
+                        longDescription:
+                            "I'm in the process of ditching ChatGPT because I am so addicted to Claude Code and paying them $200/month anyway so it feels stupid to pay even more for ChatGPT just for the mobile app.\nImage gen, app startup time, and certain quirky things aren't quite as good in Claude yet but I trust their product team is prioritizing iOS & MacOS eng and it will get there soon.",
+                    },
+                    safari: {
+                        name: "Safari",
+                        icon: "/assets/icons/safari.png",
+                        video: "/assets/videos/safari.mp4",
+                        qrCode: "/assets/qr-codes/safari.jpg",
+                        appStoreURL: "https://apps.apple.com/safari",
+                        longDescription:
+                            "I actually really like the compact tab bar on Safari mobile and it makes me miss compact tabs on Safari desktop.\nI used Arc Search for a while and its still great but I just had browser switching PTSD and this feels safe.",
+                    },
+                    googlemaps: {
+                        name: "Google Maps",
+                        icon: "/assets/icons/googlemaps.png",
+                        video: "/assets/videos/googlemaps.mp4",
+                        qrCode: "/assets/qr-codes/googlemaps.jpg",
+                        appStoreURL: "https://apps.apple.com/googlemaps",
+                        longDescription:
+                            "I am a Google Maps user and I don't feel bad about it.",
+                    },
+                    github: {
+                        name: "GitHub",
+                        icon: "/assets/icons/github.jpg",
+                        video: "/assets/videos/github.mp4",
+                        qrCode: "/assets/qr-codes/github.jpg",
+                        appStoreURL: "https://apps.apple.com/github",
+                        longDescription:
+                            "I really want to hit 1,000 GitHub contributions this year but don't think I'm going to make it and it doesn't really feel like it counts the same anyway with Claude.\n2026 for sure though we getting technical. ",
+                    },
+                    spotify: {
+                        name: "Spotify",
+                        icon: "/assets/icons/spotify.jpg",
+                        video: "/assets/videos/spotify.mp4",
+                        qrCode: "/assets/qr-codes/spotify.jpg",
+                        appStoreURL: "https://apps.apple.com/spotify",
+                        longDescription:
+                            "Spotify gets some flack on design twitter for its desktop UI which tbh is valid, but to me this product is just unchurnable. I tried switching to Apple Music and the switching process was just too much.\nI also recently ported my podcasts here from Pocket Casts. Spotify DJ and transitions are also great features.\n8.5/10 it's a good app sir.",
+                    },
+                },
+
+                folders: {
+                    money: {
+                        name: "Money",
+                        apps: [
+                            {
+                                name: "Mercury",
+                                icon: "/assets/icons/mercury.jpg",
+                                video: "/assets/videos/mercury.mp4",
+                                description:
+                                    "I want Mercury to IPO so I can own some stock. I love this shit so much. It's so good. I love it I love it I love it why can't all software be this good.",
+                            },
+                            {
+                                name: "Cash App",
+                                icon: "/assets/icons/cashapp.jpg",
+                                video: "/assets/videos/cashapp.mp4",
+                                description:
+                                    "Cash App taxes are goated and so was the rounded font and white on green Cash App aesthetic you murderous metrics-driven MFs.",
+                            },
+                            {
+                                name: "Robinhood",
+                                icon: "/assets/icons/robinhood.jpg",
+                                video: "/assets/videos/robinhood.mp4",
+                                description:
+                                    "I pick stocks and think investing and thinking about companies helps develop your worldview. I also think HOOD itself is a buy this is financial advice.",
+                            },
+                            {
+                                name: "Coinbase",
+                                icon: "/assets/icons/coinbase.jpg",
+                                video: "/assets/videos/coinbase.mp4",
+                                description:
+                                    "Venmo actually sits here on my home screen but they have this feature that detects and blocks screen recording so I couldn't make a video here.",
+                            },
+                            {
+                                name: "Chase",
+                                icon: "/assets/icons/chase.jpg",
+                                video: "/assets/videos/chase.mp4",
+                                description:
+                                    "Getting the Sapphire card was one of the biggest simp moves of my life and now I feel stuck cause I don't feel like cancelling it. Such bad UI my lord and I have no interest in pointsmaxxing.",
+                            },
+                            {
+                                name: "Stripe",
+                                icon: "/assets/icons/stripe.jpg",
+                                video: "/assets/videos/stripe.mp4",
+                                description:
+                                    "For checking Spotted in Prod revenue. I open Stripe, look at churn, think about how much better our platform could be, and close the app.",
+                            },
+                            {
+                                name: "Capital One",
+                                icon: "/assets/icons/capitalone.jpg",
+                                video: "/assets/videos/capitalone.mp4",
+                                description:
+                                    "My first CC was the Capital One Quicksilver 1.5% cash back card. Simpler times. Still a very bad UI like Chase and can't wait until I cancel these things when Mercury drops their personal CC.",
+                            },
+                            {
+                                name: "WSB",
+                                icon: "/assets/icons/wsb.jpg",
+                                video: "/assets/videos/wsb.mp4",
+                                description:
+                                    "I grew up in Watertown, MA and mostly keep my local bank account for the nostalgia. Looking at the app icon makes me think of the Dunkin Donuts and 711 around the corner.",
+                            },
+                            {
+                                name: "Wallet",
+                                icon: "/assets/icons/wallet.jpg",
+                                video: "/assets/videos/wallet.mp4",
+                                description:
+                                    "Wallet is such a beautiful app. I wonder what Apple will do with finance in the future.",
+                            },
+                        ],
+                    },
+                    work: {
+                        name: "Work",
+                        apps: [
+                            {
+                                name: "Runbuds",
+                                icon: "/assets/icons/runbuds.jpg",
+                                video: "/assets/videos/runbuds.mp4",
+                                description:
+                                    "Runbuds is my current focus. Rafael, Qasim, Gabriel and I are working on a more expressive social running app.",
+                            },
+                            {
+                                name: "Shift",
+                                icon: "/assets/icons/shift.jpg",
+                                video: "/assets/videos/shift.mov",
+                                description:
+                                    "Shift is my only solo iOS build on the App Store shoutout Claude I love you. I also think it's kind of helping me wake up earlier which is very cool.",
+                            },
+                            {
+                                name: "Shift Dev",
+                                icon: "/assets/icons/shift-dev.jpg",
+                                video: "/assets/videos/shiftdev.mov",
+                                description:
+                                    "Dev build for Shift since I'm trying to properly dogfood the app over the course of weeks and I need to constantly restart and change stuff.",
+                            },
+                            {
+                                name: "Empty",
+                                icon: "/assets/icons/empty.jpg",
+                                video: "/assets/videos/empty.mp4",
+                                description:
+                                    "Intermittent fasting app that I made with Rafael in 2024. Lovely illustrations crafted by Hannah Lee. Gonna revamp it sometime just not the current focus.",
+                            },
+                            {
+                                name: "Numbies",
+                                icon: "/assets/icons/numbies.jpg",
+                                video: "/assets/videos/numbies.mp4",
+                                description:
+                                    "Insanely stupid but fun app idea that I shipped with Anthony and Caleb. I still smile when I open it up and tap around. You might regret the bad idea, but you'll never regret doing good work.",
+                            },
+                            {
+                                name: "App Store",
+                                icon: "/assets/icons/appstore.jpg",
+                                video: "/assets/videos/appstore.mp4",
+                                description:
+                                    "Did you know you can use the App Stats shortcut to creep on ppls revenue and downloads? Idk how accurate it is but it's addictive.",
+                            },
+                            {
+                                name: "Figma",
+                                icon: "/assets/icons/figma.jpg",
+                                video: "/assets/videos/figma.mp4",
+                                description:
+                                    "Mirror mirror on the Figma app why don't u work actually to be fair I feel like you are getting slightly better.",
+                            },
+                            {
+                                name: "Linear",
+                                icon: "/assets/icons/linear.jpg",
+                                video: "/assets/videos/linear.mp4",
+                                description:
+                                    "Don't use it as much as the desktop app but still great. Love watching Gavin keep pushing his craft with highly custom motion.",
+                            },
+                            {
+                                name: "TestFlight",
+                                icon: "/assets/icons/testflight.jpg",
+                                video: "/assets/videos/testflight.mp4",
+                                description:
+                                    "Exclusive TestFlights used to be cool but now I think they are cope. Just ship it!!! Also the yellow dot annoys me.",
+                            },
+                        ],
+                    },
+                    social: {
+                        name: "Social",
+                        apps: [
+                            {
+                                name: "Messages",
+                                icon: "/assets/icons/messages.jpg",
+                                video: "/assets/videos/messages.mp4",
+                                description:
+                                    "How much of Apple's moat do you think come from blue texts? I think it's more than 50%.",
+                            },
+                            {
+                                name: "WhatsApp",
+                                icon: "/assets/icons/whatsapp.jpg",
+                                video: "/assets/videos/whatsapp.mp4",
+                                description:
+                                    "I'm looking at this app wishing Telegram was here so I could pay homage to a truly great UI but unfortunately this is the real me.",
+                            },
+                            {
+                                name: "Net",
+                                icon: "/assets/icons/net.jpg",
+                                video: "/assets/videos/net.mp4",
+                                description:
+                                    "Net's card stack is so good. Excited to see what they ship on desktop so I can fully ditch Superhuman.",
+                            },
+                            {
+                                name: "TikTok",
+                                icon: "/assets/icons/tiktok.jpg",
+                                video: "/assets/videos/tiktok.mp4",
+                                description:
+                                    "Don't pretend this shit isn't awesome. If you can't have it because it's too addicting that's fine but if you think you are above TikTok come on man.",
+                            },
+                            {
+                                name: "X",
+                                icon: "/assets/icons/x.jpg",
+                                video: "/assets/videos/x.mp4",
+                                description:
+                                    "X becoming the foundation of my career was certainly not on my life bingo card.",
+                            },
+                            {
+                                name: "Bump",
+                                icon: "/assets/icons/bump.jpg",
+                                video: "/assets/videos/bump.mp4",
+                                description:
+                                    "Best iOS team in the game right now. I just wish more of my millennial friends would download Bump.",
+                            },
+                            {
+                                name: "Instagram",
+                                icon: "/assets/icons/instagram.jpg",
+                                video: "/assets/videos/instagram.mp4",
+                                description:
+                                    "Mostly sports content here. Kinda want to follow more art & graphic design accounts so hit me with recs if you have any.",
+                            },
+                            {
+                                name: "Messenger",
+                                icon: "/assets/icons/messenger.jpg",
+                                video: "/assets/videos/messenger.mp4",
+                                description:
+                                    "My dad exclusively sends me tennis & soccer reels and very unfunny epic fail videos that are reminiscient of Americas Funniest Home Videos.",
+                            },
+                            {
+                                name: "YouTube",
+                                icon: "/assets/icons/youtube.jpg",
+                                video: "/assets/videos/youtube.mp4",
+                                description:
+                                    "YouTube is lifeee (not the mobile app so much but the platform). I grew up posting freestyle soccer videos on here #earlyadopter.",
+                            },
+                        ],
+                    },
+                    vibes: {
+                        name: "Vibes",
+                        apps: [
+                            {
+                                name: "Arena",
+                                icon: "/assets/icons/arena.jpg",
+                                video: "/assets/videos/arena.mp4",
+                                description:
+                                    '<a href="https://x.com/_yihui/status/1956036181306568873?s=20" target="_blank">Yihui\'s recent v2 iOS build</a> has finally gotten me fully into Arena. I\'ve been having so much fun stashing internet gems that I find and browsing other people\'s channels.',
+                            },
+                            {
+                                name: "WSJ",
+                                icon: "/assets/icons/wsj.jpg",
+                                video: "/assets/videos/wsj.mp4",
+                                description:
+                                    "My media diet is mostly X and podcasts, but I just subscribed to WSJ digital + print so we'll see how it goes.",
+                            },
+                            {
+                                name: "Poolsuite",
+                                icon: "/assets/icons/poolsuite.jpg",
+                                video: "/assets/videos/poolsuite.mp4",
+                                description:
+                                    "Poolsuite is such a fun project. Marty & co epitomize the level of creativity that I thihnk all small consumer teams should aspire to.",
+                            },
+                            {
+                                name: "Pokemon",
+                                icon: "/assets/icons/pokemontcgp.jpg",
+                                video: "/assets/videos/pokemon.mp4",
+                                description:
+                                    "Pokemon will never not give me nostalgia. I grew up playing Ruby on a red Nintendo DS and hid under my bedcovers so my parents couldn't see the light coming from my room.",
+                            },
+                            {
+                                name: "Anki",
+                                icon: "/assets/icons/anki.jpg",
+                                video: "/assets/videos/anki.mp4",
+                                description:
+                                    "I started using spaced repetition flashcards for my Armenian and think it was working but I haven't touched the app for months. I keep it here to guilt myself. Vegetable app for sure.",
+                            },
+                            {
+                                name: "Radio Garden",
+                                icon: "/assets/icons/radiogarden.jpg",
+                                video: "/assets/videos/radiogarden.mp4",
+                                description:
+                                    "Radio Garden is sooooo sick and I highly recommend trying this app in the car instead of your usual podcast or playlist - it's the closest thing I've felt to teleportation.",
+                            },
+                            {
+                                name: "Fotmob",
+                                icon: "/assets/icons/fotmob.jpg",
+                                video: "/assets/videos/fotmob.mp4",
+                                description:
+                                    "I'm happiest when I'm playing or watching soccer and grew up a Barcelona/Ronaldinho fan. Fotmob sits right at the intersection of my two passions: soccer and great software.",
+                            },
+                            {
+                                name: "Particle",
+                                icon: "/assets/icons/particle.jpg",
+                                video: "/assets/videos/particle.mp4",
+                                description:
+                                    "Particle is a beautiful and free AI news app. Super fluid navigation, high quality summaries, and tons of fun features like crosswords, political bias comparisons, and more.",
+                            },
+                            {
+                                name: "GOAT",
+                                icon: "/assets/icons/goat.jpg",
+                                video: "/assets/videos/goat.mp4",
+                                description:
+                                    "GOAT has all the footwear I could ever dream of (I like sneakers and cleats a lot) and their brand aesthetic is impeccable. Maybe just bump up the font size a few pixels.",
+                            },
+                        ],
+                    },
+                },
+            };
+
+            // Detect layout breakpoints (matches CSS)
+            const isMobile = () => window.innerWidth <= 450;
+            const isTablet = () =>
+                window.innerWidth > 450 && window.innerWidth <= 920;
+
+            // DOM elements
+            const contentAreaInner = document.querySelector(
+                ".content-area-inner",
+            );
+            const phoneContainer = document.querySelector(".phone-container");
+            const phoneScreen = document.querySelector(".phone-screen");
+            const videoSheets = document.querySelectorAll(".video-sheet");
+
+            // Track active video sheet
+            let activeVideoSheet = null;
+
+            // Track folder context for video switching
+            let currentFolderContext = null; // { folderName, selectedIndex }
+
+            // Track active phoneScreen animation to cancel on new opens
+            let phoneScreenAnimation = null;
+
+            // Global mouse tracking for cursor pickup after video dismiss
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            document.addEventListener("mousemove", (e) => {
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+            });
+
+            // Hover effect helpers (fade out non-hovered targets)
+            function applyHoverEffect(hoveredTarget) {
+                document
+                    .querySelectorAll(".tap-target")
+                    .forEach((otherTarget) => {
+                        if (otherTarget !== hoveredTarget) {
+                            const isDockTarget = Array.from(
+                                otherTarget.classList,
+                            ).some((cls) => cls.includes("tap-dock"));
+                            otherTarget.style.transition =
+                                "background-color 300ms ease-out";
+                            if (isDockTarget) {
+                                otherTarget.style.backgroundColor =
+                                    DOCK_OVERLAY_COLOR;
+                            } else {
+                                otherTarget.style.backgroundColor =
+                                    SCREEN_OVERLAY_COLOR;
+                            }
+                        } else {
+                            hoveredTarget.style.transition =
+                                "background-color 0ms";
+                            hoveredTarget.style.backgroundColor = "transparent";
+                        }
+                    });
+            }
+
+            function clearHoverEffect() {
+                document
+                    .querySelectorAll(".tap-target")
+                    .forEach((otherTarget) => {
+                        otherTarget.style.transition =
+                            "background-color 300ms ease-out";
+                        otherTarget.style.backgroundColor = "transparent";
+                    });
+            }
+
+            function pickupCursorHover() {
+                const elementUnderCursor = document.elementFromPoint(
+                    lastMouseX,
+                    lastMouseY,
+                );
+                if (
+                    elementUnderCursor &&
+                    elementUnderCursor.classList.contains("tap-target")
+                ) {
+                    applyHoverEffect(elementUnderCursor);
+                }
+            }
+
+            // Store home content HTML for returning to home
+            const homeContentHTML = `
+      <div class="content-header">
+        <h1>Raffi Chilingaryan</h1>
+      </div>
+      <div class="content-body">
+        <div class="content-text">
+          <p>I'm the founder of <a href="https://x.com/spottedinprod" target="_blank">Spotted in Prod</a> - a platform featuring great iOS apps and the developers behind them. I also build apps on my own and <a href="https://x.com/raffichill/status/1981370446974243270" target="_blank">with friends</a>.</p>
+          <p>I think our Home Screen setups say a lot about us, so here's mine.</p>
+          <p>Feel free to <a href="#" class="tap-around-link">tap around</a> or <a href="mailto:raffi.chilingaryan@gmail.com">get in touch</a> and thanks for stopping by.</p>
+        </div>
+        <div class="social-icons">
+          <a href="https://x.com/raffichill" target="_blank" class="social-icon">
+            <img src="/assets/social/x-icon.svg" alt="X" />
+          </a>
+          <a href="https://instagram.com/raffichill" target="_blank" class="social-icon">
+            <img src="/assets/social/instagram-icon.svg" alt="Instagram" />
+          </a>
+          <a href="https://github.com/raffichill" target="_blank" class="social-icon">
+            <img src="/assets/social/github-icon.svg" alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    `;
+
+            // Preload all folder app icons for smooth transitions
+            function preloadImages() {
+                Object.values(appData.folders).forEach((folder) => {
+                    folder.apps.forEach((app) => {
+                        const img = new Image();
+                        img.src = app.icon;
+                    });
+                });
+            }
+
+            // Open video sheet for an app
+            function openVideoSheet(appName) {
+                // Block if animation in progress
+                if (isAnimating) return false;
+
+                const video = document.querySelector(
+                    `.video-sheet[data-app="${appName}"]`,
+                );
+                if (!video) return false;
+
+                // Lock until animation completes
+                isAnimating = true;
+
+                activeVideoSheet = video;
+
+                // Reset pointer events on ALL other regular video sheets
+                // This prevents stale state from previous close animations
+                document.querySelectorAll('.video-sheet[data-app]').forEach(v => {
+                    if (v !== video) {
+                        v.style.pointerEvents = "";
+                    }
+                });
+
+                // Enable pointer events for this video (disabled by default in CSS)
+                video.style.pointerEvents = "auto";
+
+                // Clear any hover effects when opening video
+                clearHoverEffect();
+
+                // Set starting positions
+                video.style.transform = "translateY(650px)";
+                phoneScreen.style.transform = "scale(1)";
+
+                // Start video playback
+                video.currentTime = 0;
+                video.play();
+
+                // Spring animation config
+                const springConfig = {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 40,
+                    mass: 1,
+                };
+
+                phoneScreenAnimation = Motion.animate(
+                    phoneScreen,
+                    { scale: [1, 0.92] },
+                    springConfig,
+                );
+
+                // Animate video sheet up, unlock when done
+                Motion.animate(video, { y: [650, 0] }, springConfig).finished.then(() => {
+                    isAnimating = false;
+                });
+
+                return true;
+            }
+
+            // Folder video state
+            let folderVideoOpen = false;
+            let activeFolderVideo = "a"; // Which video element is currently showing
+            let folderAnimation = null; // Animation reference
+            let isAnimating = false; // Lock - stays true until animation completes AND cleanup is done
+
+            // Helper: Set up a video element with content
+            function setupFolderVideo(videoEl, videoSrc) {
+                const posterSrc = videoSrc
+                    .replace("/videos/", "/video-posters/")
+                    .replace(/\.(mp4|mov)$/, ".jpg");
+                videoEl.style.backgroundImage = `url(${posterSrc})`;
+                videoEl.style.backgroundSize = "cover";
+                videoEl.style.backgroundPosition = "center";
+                videoEl.poster = posterSrc;
+                videoEl.src = videoSrc;
+            }
+
+            // Helper: Clear a video element
+            function clearFolderVideo(videoEl) {
+                videoEl.pause();
+                videoEl.removeAttribute("src");
+                videoEl.removeAttribute("poster");
+                videoEl.style.backgroundImage = "";
+            }
+
+            // Track crossfade animations separately (for cancellation)
+            let crossfadeAnimationA = null;
+            let crossfadeAnimationB = null;
+
+            // Version counter - increments on every folder open/close to invalidate stale callbacks
+            let folderOperationVersion = 0;
+
+            // Helper: Cancel any running folder animation (don't reset styles - let caller handle that)
+            function cancelFolderAnimation() {
+                if (folderAnimation) {
+                    folderAnimation.cancel();
+                    folderAnimation = null;
+                }
+                if (phoneScreenAnimation) {
+                    phoneScreenAnimation.cancel();
+                    phoneScreenAnimation = null;
+                }
+                // Also cancel crossfade opacity animations
+                if (crossfadeAnimationA) {
+                    crossfadeAnimationA.cancel();
+                    crossfadeAnimationA = null;
+                }
+                if (crossfadeAnimationB) {
+                    crossfadeAnimationB.cancel();
+                    crossfadeAnimationB = null;
+                }
+            }
+
+            // Reset folder videos to clean state
+            function resetFolderVideos() {
+                const videoA = document.getElementById("folder-video-a");
+                const videoB = document.getElementById("folder-video-b");
+                if (!videoA || !videoB) return;
+
+                cancelFolderAnimation();
+
+                clearFolderVideo(videoA);
+                clearFolderVideo(videoB);
+
+                videoA.style.opacity = "";
+                videoA.style.transform = "";
+                videoA.style.pointerEvents = "";
+                videoB.style.opacity = "";
+                videoB.style.transform = "";
+                videoB.style.pointerEvents = "";
+
+                if (phoneScreen) {
+                    phoneScreen.style.transform = "";
+                }
+
+                activeFolderVideo = "a";
+                activeVideoSheet = null;
+                folderVideoOpen = false;
+            }
+
+            // Open a folder video - animate in from bottom
+            function openFolderVideoSheet(videoSrc) {
+                // Block if animation in progress
+                if (isAnimating) return false;
+
+                const videoA = document.getElementById("folder-video-a");
+                const videoB = document.getElementById("folder-video-b");
+                if (!videoA || !videoB) return false;
+
+                // Lock until animation completes
+                isAnimating = true;
+
+                // Reset pointer events on ALL regular video sheets (cleanup from any stuck state)
+                document.querySelectorAll('.video-sheet[data-app]').forEach(v => {
+                    v.style.pointerEvents = "";
+                });
+
+                // Increment version to invalidate any pending callbacks from previous operations
+                folderOperationVersion++;
+                const openVersion = folderOperationVersion;
+
+                // Cancel any pending animations from previous folder/crossfade
+                // This prevents stale .finished.then() callbacks from overwriting our state
+                cancelFolderAnimation();
+
+                // Cancel ALL animations on both video elements (Web Animations API)
+                // This ensures no stale animations can write values after we set them
+                videoA.getAnimations().forEach(a => a.cancel());
+                videoB.getAnimations().forEach(a => a.cancel());
+
+                // Clear both videos completely
+                clearFolderVideo(videoA);
+                clearFolderVideo(videoB);
+
+                // Force browser to clear any cached video frames by toggling visibility
+                // This prevents stale frames from showing during new folder open
+                videoB.style.visibility = "hidden";
+
+                // Reset all styles to clean state
+                videoA.style.transform = "translateY(700px)";
+                videoA.style.opacity = "1";
+                videoA.style.pointerEvents = "auto";
+                videoB.style.transform = "translateY(700px)";
+                videoB.style.opacity = "0";
+                videoB.style.pointerEvents = "none";
+                videoB.style.visibility = "hidden";
+                phoneScreen.style.transform = "scale(1)";
+
+                // Set up videoA with new content
+                setupFolderVideo(videoA, videoSrc);
+
+                // Set state
+                folderVideoOpen = true;
+                activeVideoSheet = videoA;
+                activeFolderVideo = "a";
+                clearHoverEffect();
+
+                // Animate in
+                const springConfig = {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 40,
+                    mass: 1,
+                };
+
+                phoneScreenAnimation = Motion.animate(
+                    phoneScreen,
+                    { scale: [1, 0.92] },
+                    springConfig,
+                );
+                folderAnimation = Motion.animate(
+                    videoA,
+                    { y: [700, 0] },
+                    springConfig,
+                );
+                Motion.animate(videoB, { y: [700, 0] }, springConfig); // Keep in sync
+
+                // Force opacity with a separate instant animation to override Motion.js internal state
+                Motion.animate(videoA, { opacity: 1 }, { duration: 0 });
+                Motion.animate(videoB, { opacity: 0 }, { duration: 0 });
+
+                // Unlock when animation completes
+                folderAnimation.finished.then(() => {
+                    isAnimating = false;
+                });
+
+                // Play video when ready
+                const tryPlay = () => {
+                    if (folderVideoOpen && videoA.src) {
+                        videoA.currentTime = 0;
+                        videoA.play().catch(() => {});
+                    }
+                };
+
+                if (videoA.readyState >= 2) {
+                    tryPlay();
+                } else {
+                    videoA.addEventListener("canplay", tryPlay, { once: true });
+                }
+
+                return true;
+            }
+
+            function closeVideoSheet() {
+                // Block if animation in progress
+                if (isAnimating) return;
+
+                // If no activeVideoSheet but folder video is visible, recover state
+                if (!activeVideoSheet) {
+                    const videoA = document.getElementById("folder-video-a");
+                    const videoB = document.getElementById("folder-video-b");
+                    // Check if either folder video is visible (has src and not translated away)
+                    if (videoA && videoA.src && videoA.style.transform !== "translateY(650px)" && videoA.style.opacity !== "0") {
+                        activeVideoSheet = videoA;
+                        folderVideoOpen = true;
+                        activeFolderVideo = "a";
+                    } else if (videoB && videoB.src && videoB.style.transform !== "translateY(650px)" && videoB.style.opacity !== "0") {
+                        activeVideoSheet = videoB;
+                        folderVideoOpen = true;
+                        activeFolderVideo = "b";
+                    } else {
+                        return; // No video to close
+                    }
+                }
+
+                const video = activeVideoSheet;
+                const isFolderVideo = video.classList.contains("folder-video");
+
+                // Lock until animation AND cleanup complete
+                isAnimating = true;
+
+                // Increment version to invalidate any pending crossfade callbacks
+                folderOperationVersion++;
+
+                activeVideoSheet = null;
+                currentFolderContext = null;
+
+                const springConfig = {
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 40,
+                    mass: 1,
+                };
+
+                if (isFolderVideo) {
+                    folderVideoOpen = false;
+
+                    // Capture version for callback guard
+                    const closeVersion = folderOperationVersion;
+
+                    const videoA = document.getElementById("folder-video-a");
+                    const videoB = document.getElementById("folder-video-b");
+                    const currentVideo =
+                        activeFolderVideo === "a" ? videoA : videoB;
+
+                    // Set starting positions and animate out
+                    currentVideo.style.transform = "translateY(0)";
+                    phoneScreen.style.transform = "scale(0.92)";
+
+                    phoneScreenAnimation = Motion.animate(
+                        phoneScreen,
+                        { scale: [0.92, 1] },
+                        springConfig,
+                    );
+                    folderAnimation = Motion.animate(
+                        currentVideo,
+                        { y: [0, 650] },
+                        springConfig,
+                    );
+
+                    // Clean up after animation completes, then unlock
+                    folderAnimation.finished.then(() => {
+                        // Guard: Only run cleanup if no new folder operation started
+                        if (folderOperationVersion !== closeVersion) {
+                            // Version changed - a new operation took over
+                            // That operation is responsible for state, just return
+                            return;
+                        }
+                        clearFolderVideo(videoA);
+                        clearFolderVideo(videoB);
+                        videoA.style.opacity = "";
+                        videoA.style.transform = "";
+                        videoA.style.pointerEvents = "";
+                        videoB.style.opacity = "";
+                        videoB.style.transform = "";
+                        videoB.style.pointerEvents = "";
+                        phoneScreen.style.transform = "";
+                        folderAnimation = null;
+                        phoneScreenAnimation = null;
+                        activeFolderVideo = "a";
+                        pickupCursorHover();
+                        isAnimating = false; // Unlock after cleanup
+                    });
+                } else {
+                    // Regular video - set starting positions and animate out
+                    video.style.transform = "translateY(0)";
+                    phoneScreen.style.transform = "scale(0.92)";
+
+                    phoneScreenAnimation = Motion.animate(
+                        phoneScreen,
+                        { scale: [0.92, 1] },
+                        springConfig,
+                    );
+
+                    Motion.animate(
+                        video,
+                        { y: [0, 650] },
+                        springConfig,
+                    ).finished.then(() => {
+                        video.pause();
+                        video.currentTime = 0;
+                        video.style.transform = "";
+                        video.style.pointerEvents = "";
+                        phoneScreen.style.transform = "";
+                        phoneScreenAnimation = null;
+                        pickupCursorHover();
+                        isAnimating = false; // Unlock after cleanup
+                    });
+                }
+
+                swapContent(homeContentHTML);
+            }
+
+            // Initialize
+            function init() {
+                preloadImages();
+                attachEventListeners();
+
+                // Sample colors from screenshot once loaded
+                const mockupImg = document.querySelector(".phone-mockup-image");
+                if (mockupImg) {
+                    if (mockupImg.complete) {
+                        sampleColorsFromScreenshot();
+                    } else {
+                        mockupImg.addEventListener(
+                            "load",
+                            sampleColorsFromScreenshot,
+                        );
+                    }
+                }
+
+                // Add click handlers to video sheets for dismiss
+                videoSheets.forEach((video) => {
+                    video.addEventListener("click", closeVideoSheet);
+                });
+
+                // "Tap around" link triggers phone shake on hover (delegated for content swaps)
+                document.addEventListener(
+                    "mouseenter",
+                    (e) => {
+                        if (e.target.classList?.contains("tap-around-link")) {
+                            shakePhone();
+                        }
+                    },
+                    true,
+                );
+
+                // Reset to home content when phone hides (920px breakpoint)
+                let wasPhoneHidden = window.innerWidth <= 920;
+                window.addEventListener("resize", () => {
+                    const isPhoneHidden = window.innerWidth <= 920;
+                    if (isPhoneHidden && !wasPhoneHidden) {
+                        // Just crossed into phone-hidden state - instantly show home content
+                        contentAreaInner.innerHTML = homeContentHTML;
+                        // Close any open video
+                        if (activeVideoSheet) {
+                            activeVideoSheet.pause();
+                            activeVideoSheet.style.transform =
+                                "translateY(650px)";
+                            phoneScreen.style.transform = "scale(1)";
+                            activeVideoSheet = null;
+                        }
+                        // Reset folder videos using shared function
+                        resetFolderVideos();
+                        // Clear folder context
+                        currentFolderContext = null;
+                    }
+                    wasPhoneHidden = isPhoneHidden;
+                });
+            }
+
+            // Content swapping with Motion animations
+            function swapContent(newHTML) {
+                // Remove any leftover clones from previous transitions
+                const parent = contentAreaInner.parentElement;
+                const existingClones = Array.from(parent.children).filter(
+                    (el) =>
+                        el !== contentAreaInner &&
+                        el.style.position === "absolute",
+                );
+                existingClones.forEach((clone) => clone.remove());
+
+                // Get exact position of content-area-inner before cloning
+                const rect = contentAreaInner.getBoundingClientRect();
+                const parentRect =
+                    contentAreaInner.parentElement.getBoundingClientRect();
+
+                // Check if this is a folder-to-folder transition
+                const oldIsFolder =
+                    contentAreaInner.querySelector(".folder-container");
+                const newIsFolder = newHTML.includes("folder-container");
+
+                // Clone current content for exit animation
+                const oldContent = contentAreaInner.cloneNode(true);
+                oldContent.style.position = "absolute";
+                oldContent.style.top = rect.top - parentRect.top + "px";
+                oldContent.style.left = rect.left - parentRect.left + "px";
+                oldContent.style.width = rect.width + "px";
+                oldContent.style.height = rect.height + "px";
+                oldContent.style.pointerEvents = "none";
+                contentAreaInner.parentElement.appendChild(oldContent);
+
+                // Swap content immediately
+                contentAreaInner.innerHTML = newHTML;
+
+                // Folder-to-folder: Simple cross-fade (same as other transitions)
+                if (oldIsFolder && newIsFolder) {
+                    // Set initial state for new content
+                    contentAreaInner.style.opacity = "0";
+
+                    // Exit animation on clone
+                    Motion.animate(
+                        oldContent,
+                        { opacity: [1, 0] },
+                        { duration: 0.3, easing: "ease-out" },
+                    ).finished.then(() => {
+                        oldContent.remove();
+                    });
+
+                    // Entrance animation on new content
+                    Motion.animate(
+                        contentAreaInner,
+                        { opacity: [0, 1] },
+                        { duration: 0.3, easing: "ease-out" },
+                    ).finished.then(() => {
+                        contentAreaInner.style.opacity = "";
+                    });
+                } else {
+                    // Normal animation for non-folder transitions
+
+                    // Set initial state for new content
+                    contentAreaInner.style.opacity = "0";
+                    contentAreaInner.style.transform = "translateY(0px)";
+                    contentAreaInner.style.filter = "blur(0px)";
+
+                    // Exit animation on clone: 400ms, ease-out
+                    Motion.animate(
+                        oldContent,
+                        {
+                            opacity: [1, 0],
+                            transform: ["translateY(0)", "translateY(0px)"],
+                            filter: ["blur(0)", "blur(0px)"],
+                        },
+                        {
+                            duration: 0.4,
+                            easing: "ease-out",
+                        },
+                    ).finished.then(() => {
+                        oldContent.remove();
+                    });
+
+                    // Entrance animation on new content: 400ms
+                    Motion.animate(
+                        contentAreaInner,
+                        {
+                            transform: ["translateY(0px)", "translateY(0)"],
+                        },
+                        {
+                            duration: 0.4,
+                            easing: [0.34, 1.56, 0.64, 1],
+                        },
+                    );
+
+                    Motion.animate(
+                        contentAreaInner,
+                        {
+                            opacity: [0, 1],
+                            filter: ["blur(12px)", "blur(0)"],
+                        },
+                        {
+                            duration: 0.4,
+                            easing: "ease-in",
+                        },
+                    ).finished.then(() => {
+                        contentAreaInner.style.opacity = "";
+                        contentAreaInner.style.transform = "";
+                        contentAreaInner.style.filter = "";
+                    });
+                }
+            }
+
+            function attachEventListeners() {
+                // Desktop: App tap targets
+                document
+                    .querySelectorAll(".desktop-view .tap-target[data-app]")
+                    .forEach((el) => {
+                        el.addEventListener("click", () =>
+                            handleAppClick(el.dataset.app),
+                        );
+                    });
+
+                // Desktop: Folder tap targets
+                document
+                    .querySelectorAll(".desktop-view .tap-target[data-folder]")
+                    .forEach((el) => {
+                        el.addEventListener("click", () =>
+                            handleFolderClick(el.dataset.folder),
+                        );
+                    });
+
+                // Desktop: Phone hover effect (1% scale)
+                if (phoneContainer) {
+                    let isHovering = false;
+                    phoneContainer.addEventListener("mouseenter", () => {
+                        isHovering = true;
+                        Motion.animate(
+                            phoneContainer,
+                            { scale: 1.01 },
+                            {
+                                duration: 0.15,
+                                easing: "ease-out",
+                            },
+                        );
+                    });
+                    phoneContainer.addEventListener("mouseleave", () => {
+                        isHovering = false;
+                        Motion.animate(
+                            phoneContainer,
+                            { scale: 1 },
+                            {
+                                duration: 0.15,
+                                easing: "ease-out",
+                            },
+                        );
+                    });
+                }
+
+                // Show tap targets on hover - inverted logic (fade out non-hovered targets)
+                document.querySelectorAll(".tap-target").forEach((target) => {
+                    target.addEventListener("mouseenter", () =>
+                        applyHoverEffect(target),
+                    );
+                    target.addEventListener("mouseleave", () =>
+                        clearHoverEffect(),
+                    );
+                });
+
+                // Close overlay on ESC
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") {
+                        closeOverlay();
+                    }
+                });
+
+                // Click on phone deadspace (not app/widget) returns to home when folder is open
+                document
+                    .querySelector(".phone-frame")
+                    .addEventListener("click", (e) => {
+                        // Only trigger if clicking on deadspace (not a tap target)
+                        const isTapTarget = e.target.closest(".tap-target");
+                        const isFolder =
+                            contentAreaInner.querySelector(".folder-container");
+                        if (!isTapTarget && isFolder) {
+                            closeOverlay();
+                        }
+                    });
+            }
+
+            function handleAppClick(appName) {
+                // Block if animation in progress
+                if (isAnimating) return;
+
+                // Try to open video sheet - must succeed before updating RHS
+                if (!openVideoSheet(appName)) {
+                    return;
+                }
+
+                // Show app info on RHS (if available)
+                const app = appData.apps[appName];
+                if (!app || !app.longDescription) return;
+
+                const html = `
+        <div class="content-header">
+          <h1>${app.name}</h1>
+        </div>
+        <div class="content-body">
+          <div class="app-content">
+            <p class="app-description">${app.longDescription.replace(/\n/g, "<br><br>")}</p>
+          </div>
+          <button class="back-button" onclick="closeOverlay()">
+            <img src="/assets/back-icon.svg" alt="Back" />
+          </button>
+        </div>
+      `;
+
+                swapContent(html);
+            }
+
+            function handleFolderClick(folderName) {
+                // Block if animation in progress
+                if (isAnimating) return;
+
+                const folder = appData.folders[folderName];
+                if (!folder) return;
+
+                // Don't animate if already showing this folder
+                const currentFolder =
+                    contentAreaInner.querySelector(".folder-container")?.dataset
+                        .currentFolder;
+                if (currentFolder === folderName) return;
+
+                // Open video for first app - MUST succeed before updating RHS
+                const firstApp = folder.apps[0];
+                if (firstApp && firstApp.video) {
+                    if (!openFolderVideoSheet(firstApp.video)) {
+                        return; // Video didn't open, don't update anything
+                    }
+                }
+
+                // Only set context AFTER video successfully opens
+                currentFolderContext = { folderName, selectedIndex: 0 };
+
+                const appsHtml = folder.apps
+                    .map(
+                        (app, index) => `
+        <div class="folder-app-item${index === 0 ? " selected" : ""}" data-folder-app-index="${index}">
+          <img src="${app.icon}" alt="${app.name}" class="folder-app-icon">
+          <p class="folder-app-description">${app.description}</p>
+        </div>
+      `,
+                    )
+                    .join("");
+
+                // Complete folder component - same header format as apps
+                const html = `
+        <div class="folder-container" data-current-folder="${folderName}">
+          <div class="content-header">
+            <h1>${folder.name}</h1>
+          </div>
+          <div class="folder-scroll-area">
+            ${appsHtml}
+          </div>
+          <div class="folder-top-mask"></div>
+          <div class="folder-bottom-mask"></div>
+        </div>
+      `;
+
+                swapContent(html);
+
+                // Add click handlers to folder app items (after DOM update)
+                setTimeout(() => {
+                    attachFolderItemListeners();
+                    attachGradientScrollListener();
+                    // Apply squircles to dynamically created folder icons
+                    if (window.applyFolderIconSquircles) {
+                        window.applyFolderIconSquircles();
+                    }
+                }, 0);
+            }
+
+            // Dynamic gradient masks based on scroll position
+            function attachGradientScrollListener() {
+                const scrollArea = document.querySelector(
+                    ".folder-scroll-area",
+                );
+                const topMask = document.querySelector(".folder-top-mask");
+                const bottomMask = document.querySelector(
+                    ".folder-bottom-mask",
+                );
+
+                if (!scrollArea || !topMask || !bottomMask) return;
+
+                // Read mask heights from CSS variables
+                const styles = getComputedStyle(document.documentElement);
+                const TOP_MIN = 48;
+                const TOP_MAX =
+                    parseInt(
+                        styles.getPropertyValue("--folder-top-mask-height"),
+                    ) || 168;
+                const BOTTOM_MIN = 0;
+                const BOTTOM_MAX =
+                    parseInt(
+                        styles.getPropertyValue("--folder-bottom-mask-height"),
+                    ) || 244;
+
+                function updateGradients() {
+                    const scrollTop = scrollArea.scrollTop;
+                    const maxScroll =
+                        scrollArea.scrollHeight - scrollArea.clientHeight;
+
+                    // Add tolerance for near-bottom detection (within 2px = 100%)
+                    let progress = 0;
+                    if (maxScroll > 0) {
+                        progress = Math.min(scrollTop / maxScroll, 1);
+                        // Snap to 1 if within 2px of bottom
+                        if (maxScroll - scrollTop < 2) progress = 1;
+                    }
+
+                    // Top gradient: 48px → 144px between 0-10% scroll
+                    const topProgress = Math.min(progress / 0.1, 1);
+                    const topHeight =
+                        TOP_MIN + (TOP_MAX - TOP_MIN) * topProgress;
+                    topMask.style.height = `${topHeight}px`;
+
+                    // Bottom gradient: 244px → 0px between 90-100% scroll
+                    const bottomProgress = Math.min(
+                        Math.max((progress - 0.9) / 0.1, 0),
+                        1,
+                    );
+                    const bottomHeight =
+                        BOTTOM_MAX - (BOTTOM_MAX - BOTTOM_MIN) * bottomProgress;
+                    bottomMask.style.height = `${bottomHeight}px`;
+                }
+
+                // Initial update
+                updateGradients();
+
+                // Update on scroll
+                scrollArea.addEventListener("scroll", updateGradients, {
+                    passive: true,
+                });
+            }
+
+            // Attach click listeners to folder app items
+            function attachFolderItemListeners() {
+                const springConfig = {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 24,
+                };
+                const scrollArea = document.querySelector(
+                    ".folder-scroll-area",
+                );
+                let currentHoveredItem = null;
+
+                // Instant hover tracking via mousemove (works during scroll)
+                if (scrollArea) {
+                    scrollArea.addEventListener("mousemove", (e) => {
+                        const item = e.target.closest(".folder-app-item");
+                        if (item !== currentHoveredItem) {
+                            if (currentHoveredItem) {
+                                currentHoveredItem.classList.remove("hover");
+                            }
+                            currentHoveredItem = item;
+                            if (item) {
+                                item.classList.add("hover");
+                            }
+                        }
+                    });
+
+                    scrollArea.addEventListener("mouseleave", () => {
+                        if (currentHoveredItem) {
+                            currentHoveredItem.classList.remove("hover");
+                            currentHoveredItem = null;
+                        }
+                    });
+                }
+
+                document
+                    .querySelectorAll(".folder-app-item")
+                    .forEach((item) => {
+                        item.addEventListener("click", () => {
+                            const index = parseInt(item.dataset.folderAppIndex);
+                            if (
+                                currentFolderContext &&
+                                index !== currentFolderContext.selectedIndex
+                            ) {
+                                selectFolderApp(index);
+                            }
+                        });
+
+                        // Scale down on press
+                        const scaleDown = () => {
+                            Motion.animate(item, { scale: 0.98 }, springConfig);
+                        };
+
+                        // Scale back up on release
+                        const scaleUp = () => {
+                            Motion.animate(item, { scale: 1 }, springConfig);
+                        };
+
+                        item.addEventListener("mousedown", scaleDown);
+                        item.addEventListener("touchstart", scaleDown, {
+                            passive: true,
+                        });
+                        item.addEventListener("mouseup", scaleUp);
+                        item.addEventListener("mouseleave", scaleUp);
+                        item.addEventListener("touchend", scaleUp);
+                        item.addEventListener("touchcancel", scaleUp);
+                    });
+            }
+
+            // Select a different app within the folder (crossfade transition)
+            function selectFolderApp(index) {
+                // Block if animation in progress or folder not properly open
+                if (isAnimating || !currentFolderContext || !folderVideoOpen) return;
+
+                const folder = appData.folders[currentFolderContext.folderName];
+                const app = folder?.apps[index];
+                if (!app) return;
+
+                // Skip if already selected
+                if (currentFolderContext.selectedIndex === index) return;
+
+                // Get both folder video elements
+                const videoA = document.getElementById("folder-video-a");
+                const videoB = document.getElementById("folder-video-b");
+                if (!videoA || !videoB) return;
+
+                // Determine current and next video elements
+                const currentVideo =
+                    activeFolderVideo === "a" ? videoA : videoB;
+                const nextVideo = activeFolderVideo === "a" ? videoB : videoA;
+
+                if (app.video) {
+                    // Lock until crossfade completes
+                    isAnimating = true;
+
+                    // Capture version to guard against stale callbacks
+                    const crossfadeVersion = folderOperationVersion;
+
+                    // Update state and DOM only after we've committed to the operation
+                    currentFolderContext.selectedIndex = index;
+                    document
+                        .querySelectorAll(".folder-app-item")
+                        .forEach((item, i) => {
+                            item.classList.toggle("selected", i === index);
+                        });
+
+                    // Set up current and next video states
+                    currentVideo.style.opacity = "1";
+                    currentVideo.style.transform = "translateY(0)";
+
+                    setupFolderVideo(nextVideo, app.video);
+                    nextVideo.style.visibility = "visible";
+                    nextVideo.style.opacity = "0";
+                    nextVideo.style.transform = "translateY(0)";
+                    nextVideo.style.pointerEvents = "auto";
+
+                    // Crossfade - track both animations for cancellation
+                    crossfadeAnimationA = Motion.animate(
+                        currentVideo,
+                        { opacity: [1, 0] },
+                        { duration: 0.25, easing: "ease-in-out" },
+                    );
+                    crossfadeAnimationB = Motion.animate(
+                        nextVideo,
+                        { opacity: [0, 1] },
+                        { duration: 0.25, easing: "ease-in-out" },
+                    );
+                    folderAnimation = crossfadeAnimationB;
+
+                    // Clean up old video after crossfade, then unlock
+                    folderAnimation.finished.then(() => {
+                        // Guard: Only apply cleanup if version matches (no folder open/close since)
+                        if (folderOperationVersion !== crossfadeVersion) {
+                            return;
+                        }
+                        clearFolderVideo(currentVideo);
+                        currentVideo.style.opacity = "0";
+                        currentVideo.style.pointerEvents = "none";
+                        folderAnimation = null;
+                        isAnimating = false; // Unlock after cleanup
+                    });
+
+                    // Play next video immediately
+                    nextVideo.play().catch(() => {});
+
+                    // Swap tracker
+                    activeFolderVideo = activeFolderVideo === "a" ? "b" : "a";
+                    activeVideoSheet = nextVideo;
+                } else {
+                    // App has no video - update selection and pulse as feedback
+                    currentFolderContext.selectedIndex = index;
+                    document
+                        .querySelectorAll(".folder-app-item")
+                        .forEach((item, i) => {
+                            item.classList.toggle("selected", i === index);
+                        });
+                    Motion.animate(
+                        currentVideo,
+                        { opacity: [1, 0.7, 1] },
+                        { duration: 0.3, easing: "ease-in-out" },
+                    );
+                }
+            }
+
+            function closeOverlay() {
+                // Close video if open
+                if (activeVideoSheet) {
+                    closeVideoSheet();
+                } else {
+                    // Return to home content
+                    swapContent(homeContentHTML);
+                }
+                // Clear folder context
+                currentFolderContext = null;
+            }
+
+            // Shake the phone when "tap around" is clicked
+            function shakePhone() {
+                if (!phoneContainer) return;
+
+                // Scale up and shake keyframes
+                Motion.animate(
+                    phoneContainer,
+                    {
+                        scale: [1, 1.01, 1.01, 1.01, 1.01, 1],
+                        rotate: [0, -0.5, 0.5, -0.5, 0.5, 0],
+                    },
+                    { duration: 0.5, easing: "ease-in-out" },
+                );
+            }
+
+            // ========== INTRO ANIMATION SYSTEM ==========
+
+            // Intro sequence with manual pause control
+            // Each segment: { text, pauseAfter (ms), skipLineBreaks (optional) }
+            const introSequence = [
+                // Name (skipLineBreaks to prevent br tags in fixed-height header)
+                {
+                    target: "intro-name",
+                    text: "Raffi Chilingaryan",
+                    pauseAfter: 400,
+                    skipLineBreaks: true,
+                },
+
+                // P1 - broken into pause points
+                {
+                    target: "intro-p1",
+                    text: 'I\'m the founder of <a href="https://x.com/spottedinprod" target="_blank">Spotted in Prod</a>',
+                    pauseAfter: 500,
+                    append: false,
+                },
+                {
+                    target: "intro-p1",
+                    text: " - a platform featuring great iOS apps and the developers behind them.",
+                    pauseAfter: 400,
+                    append: true,
+                },
+                {
+                    target: "intro-p1",
+                    text: ' I also build apps on my own and <a href="https://x.com/raffichill/status/1981370446974243270" target="_blank">with friends</a>.',
+                    pauseAfter: 500,
+                    append: true,
+                },
+
+                // P2
+                {
+                    target: "intro-p2",
+                    text: "I think our Home Screen setups say a lot about us, so here's mine.",
+                    pauseAfter: 400,
+                    append: false,
+                },
+
+                // P3
+                {
+                    target: "intro-p3",
+                    text: 'Feel free to <a href="#" class="tap-around-link">tap around</a> or <a href="mailto:raffi.chilingaryan@gmail.com">get in touch</a> and thanks for stopping by.',
+                    pauseAfter: 0,
+                    append: false,
+                },
+            ];
+
+            let videosReady = false;
+            let introComplete = false;
+
+            // Typewriter effect - types out text character by character
+            // Handles word wrapping by adding whole words when they would overflow
+            function typeWriter(
+                element,
+                html,
+                speed = 20,
+                append = false,
+                skipLineBreaks = false,
+            ) {
+                return new Promise((resolve) => {
+                    const startHTML = append ? element.innerHTML : "";
+                    let htmlIndex = 0;
+                    let currentHTML = startHTML;
+                    let inTag = false;
+
+                    // Get the initial height to detect line wraps (skip if linebreaks disabled)
+                    let lastHeight = 0;
+                    if (!skipLineBreaks) {
+                        element.innerHTML = currentHTML || "\u200B"; // Zero-width space to establish height
+                        lastHeight = element.scrollHeight;
+                        if (!currentHTML) element.innerHTML = "";
+                    }
+
+                    function type() {
+                        if (htmlIndex < html.length) {
+                            const char = html[htmlIndex];
+
+                            if (char === "<") {
+                                inTag = true;
+                            }
+
+                            if (inTag) {
+                                // Add entire tag at once
+                                let tagEnd = html.indexOf(">", htmlIndex);
+                                currentHTML += html.substring(
+                                    htmlIndex,
+                                    tagEnd + 1,
+                                );
+                                htmlIndex = tagEnd + 1;
+
+                                if (
+                                    char === "<" &&
+                                    html[htmlIndex - 1] === ">"
+                                ) {
+                                    inTag = false;
+                                }
+
+                                element.innerHTML = currentHTML;
+                                setTimeout(type, 0);
+                            } else {
+                                // Check if we're starting a new word (only if line breaks enabled)
+                                if (
+                                    !skipLineBreaks &&
+                                    char !== " " &&
+                                    (currentHTML.endsWith(" ") ||
+                                        currentHTML === startHTML ||
+                                        currentHTML === "")
+                                ) {
+                                    // Find the end of this word
+                                    let wordEnd = htmlIndex;
+                                    while (
+                                        wordEnd < html.length &&
+                                        html[wordEnd] !== " " &&
+                                        html[wordEnd] !== "<"
+                                    ) {
+                                        wordEnd++;
+                                    }
+                                    const word = html.substring(
+                                        htmlIndex,
+                                        wordEnd,
+                                    );
+
+                                    // Test if adding this word would cause a height change
+                                    const testHTML = currentHTML + word;
+                                    element.innerHTML = testHTML;
+                                    const newHeight = element.scrollHeight;
+
+                                    if (newHeight > lastHeight) {
+                                        // Word will wrap - insert line break so typing starts
+                                        // on the new line (prevents jarring mid-word jump)
+                                        currentHTML += "<br>";
+                                        lastHeight = newHeight;
+                                    }
+                                    // Reset and type char by char
+                                    element.innerHTML = currentHTML;
+                                }
+
+                                currentHTML += char;
+                                element.innerHTML = currentHTML;
+                                htmlIndex++;
+
+                                // Update height tracking (only if line breaks enabled)
+                                if (!skipLineBreaks) {
+                                    const newHeight = element.scrollHeight;
+                                    if (newHeight > lastHeight) {
+                                        lastHeight = newHeight;
+                                    }
+                                }
+
+                                setTimeout(type, speed);
+                            }
+                        } else {
+                            resolve();
+                        }
+                    }
+
+                    type();
+                });
+            }
+
+            // Preload all videos and track when ready
+            function preloadVideos() {
+                return new Promise((resolve) => {
+                    const videos =
+                        document.querySelectorAll(".video-sheet[src]");
+                    if (videos.length === 0) {
+                        resolve();
+                        return;
+                    }
+
+                    let loadedCount = 0;
+                    const totalVideos = videos.length;
+
+                    videos.forEach((video) => {
+                        // Force load
+                        video.load();
+
+                        const onReady = () => {
+                            loadedCount++;
+                            if (loadedCount >= totalVideos) {
+                                videosReady = true;
+                                resolve();
+                            }
+                        };
+
+                        if (video.readyState >= 3) {
+                            onReady();
+                        } else {
+                            video.addEventListener("canplaythrough", onReady, {
+                                once: true,
+                            });
+                            // Fallback timeout in case video stalls
+                            setTimeout(onReady, 5000);
+                        }
+                    });
+                });
+            }
+
+            // Run the intro sequence
+            async function runIntroSequence() {
+                const socialEl = document.querySelector(".intro-social-icons");
+
+                // Start video preloading immediately
+                const videoPromise = preloadVideos();
+
+                // Run through each segment
+                for (const segment of introSequence) {
+                    const el = document.getElementById(segment.target);
+                    await typeWriter(
+                        el,
+                        segment.text,
+                        20,
+                        segment.append,
+                        segment.skipLineBreaks,
+                    );
+                    if (segment.pauseAfter > 0) {
+                        await sleep(segment.pauseAfter);
+                    }
+                }
+
+                // Reveal social icons
+                socialEl.classList.add("revealed");
+                await sleep(800);
+
+                introComplete = true;
+
+                // Wait for videos if not ready yet
+                await videoPromise;
+
+                // Remember that user has seen intro
+                localStorage.setItem("hasSeenIntro", "true");
+
+                // Trigger the reveal animation
+                revealPhone();
+            }
+
+            function sleep(ms) {
+                return new Promise((resolve) => setTimeout(resolve, ms));
+            }
+
+            // Animate phone in and shift content to final position
+            function revealPhone() {
+                const desktopView = document.querySelector(".desktop-view");
+                const contentArea = document.querySelector(".content-area");
+
+                // On mobile or tablet, skip the phone animation entirely
+                if (isMobile() || isTablet()) {
+                    desktopView.classList.remove("intro-mode");
+                    return;
+                }
+
+                // STEP 1: Measure content's START position (centered, in intro-mode)
+                const contentStartRect = contentArea.getBoundingClientRect();
+
+                // STEP 2: Remove intro-mode to calculate TRUE final flex positions
+                // JS is synchronous - browser won't repaint until we're done
+                desktopView.classList.remove("intro-mode");
+
+                // STEP 3: Measure the ACTUAL final positions (before browser repaints)
+                const phoneEndRect = phoneContainer.getBoundingClientRect();
+                const contentEndRect = contentArea.getBoundingClientRect();
+
+                // STEP 4: Immediately set absolute positioning to prevent visual jump
+                // Content starts at its centered position
+                contentArea.style.position = "absolute";
+                contentArea.style.left = contentStartRect.left + "px";
+                contentArea.style.top = contentEndRect.top + "px";
+                contentArea.style.willChange = "transform";
+
+                // Phone at its final X/Y position (will animate Y from below)
+                phoneContainer.style.position = "absolute";
+                phoneContainer.style.left = phoneEndRect.left + "px";
+                phoneContainer.style.top = phoneEndRect.top + "px";
+                phoneContainer.style.willChange = "transform";
+
+                // Calculate horizontal distance content needs to travel
+                const deltaX = contentEndRect.left - contentStartRect.left;
+
+                // Spring config for both animations
+                const springConfig = {
+                    type: "spring",
+                    stiffness: 40,
+                    damping: 10,
+                    mass: 1,
+                };
+
+                // STEP 5: Animate content sliding to its final position
+                Motion.animate(
+                    contentArea,
+                    { x: [0, deltaX] },
+                    springConfig,
+                ).finished.then(() => {
+                    // After animation, switch back to normal flex flow
+                    contentArea.style.position = "";
+                    contentArea.style.left = "";
+                    contentArea.style.top = "";
+                    contentArea.style.transform = "";
+                    contentArea.style.willChange = "";
+                    phoneContainer.style.position = "";
+                    phoneContainer.style.left = "";
+                    phoneContainer.style.top = "";
+                    phoneContainer.style.transform = "";
+                    phoneContainer.style.willChange = "";
+                });
+
+                // STEP 6: Animate phone sliding up from bottom of screen
+                const startY = window.innerHeight - phoneEndRect.top;
+                Motion.animate(
+                    phoneContainer,
+                    {
+                        y: [startY, 0],
+                        rotate: [-3, 0],
+                    },
+                    springConfig,
+                );
+            }
+
+            // Skip intro - set content immediately
+            function skipIntro() {
+                const socialEl = document.querySelector(".intro-social-icons");
+
+                // Set all text content immediately
+                for (const segment of introSequence) {
+                    const el = document.getElementById(segment.target);
+                    if (segment.append) {
+                        el.innerHTML += segment.text;
+                    } else {
+                        el.innerHTML = segment.text;
+                    }
+                }
+
+                // Reveal social icons
+                socialEl.classList.add("revealed");
+
+                // Mark intro as complete
+                introComplete = true;
+
+                // Preload videos in background
+                preloadVideos();
+            }
+
+            // For testing: window.resetIntro() clears localStorage and reloads
+            window.resetIntro = () => {
+                localStorage.removeItem("hasSeenIntro");
+                location.reload();
+            };
+
+            function startApp() {
+                // On mobile or tablet, the respective views handle everything via CSS
+                // No need to run any intro logic
+                if (isMobile() || isTablet()) {
+                    init();
+                    return;
+                }
+
+                // Check URL param to force intro (for testing)
+                const urlParams = new URLSearchParams(window.location.search);
+                const forceIntro = urlParams.get("intro") === "1";
+
+                // Desktop (>920px): check if returning visitor
+                const hasSeenIntro = localStorage.getItem("hasSeenIntro");
+
+                if (hasSeenIntro && !forceIntro) {
+                    // Skip intro for returning visitors - smooth fade in
+                    const desktopView = document.querySelector(".desktop-view");
+                    desktopView.style.opacity = "0";
+
+                    init();
+                    skipIntro();
+
+                    // 200ms delay, then 300ms fade in
+                    setTimeout(() => {
+                        Motion.animate(
+                            desktopView,
+                            { opacity: [0, 1] },
+                            { duration: 0.3, easing: "ease-out" },
+                        ).finished.then(() => {
+                            desktopView.style.opacity = "";
+                        });
+                    }, 200);
+                } else {
+                    // Show intro for first-time visitors (or forced via ?intro=1)
+                    document
+                        .querySelector(".desktop-view")
+                        .classList.add("intro-mode");
+
+                    init();
+
+                    // Wait for fonts to load before starting typewriter
+                    document.fonts.ready.then(() => {
+                        setTimeout(runIntroSequence, 100);
+                    });
+                }
+            }
+
+            startApp();
+        </script>
+
+        <!-- Corner smoothing module -->
+        <script type="module">
+            import { squircleObserver } from "https://esm.sh/corner-smoothing";
+            import { getSvgPath } from "https://esm.sh/figma-squircle";
+
+            // Phone frame: 49px radius
+            const phoneFrame = document.querySelector(".phone-frame");
+            if (phoneFrame) squircleObserver(phoneFrame, { cornerRadius: 49 });
+
+            // Inner shadow: squircle ring mask (outer 49px, inner ~47px for thin edge glow)
+            const innerShadow = document.querySelector(".phone-inner-shadow");
+            if (innerShadow) {
+                const applyInnerShadowMask = () => {
+                    const width = innerShadow.clientWidth;
+                    const height = innerShadow.clientHeight;
+                    const outerRadius = 49;
+                    const borderWidth = 3; // Thin edge for inner glow
+                    const innerRadius = outerRadius - borderWidth;
+                    const innerWidth = width - borderWidth * 2;
+                    const innerHeight = height - borderWidth * 2;
+
+                    const outerPath = getSvgPath({
+                        width,
+                        height,
+                        cornerRadius: outerRadius,
+                        cornerSmoothing: 0.6,
+                    });
+
+                    const innerPath = getSvgPath({
+                        width: innerWidth,
+                        height: innerHeight,
+                        cornerRadius: innerRadius,
+                        cornerSmoothing: 0.6,
+                    });
+
+                    const outerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><path d="${outerPath}" fill="white"/></svg>`;
+                    const innerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${innerWidth}" height="${innerHeight}"><path d="${innerPath}" fill="white"/></svg>`;
+
+                    const outerUrl = `url("data:image/svg+xml,${encodeURIComponent(outerSvg)}")`;
+                    const innerUrl = `url("data:image/svg+xml,${encodeURIComponent(innerSvg)}")`;
+
+                    innerShadow.style.webkitMaskImage = `${outerUrl}, ${innerUrl}`;
+                    innerShadow.style.maskImage = `${outerUrl}, ${innerUrl}`;
+                    innerShadow.style.webkitMaskPosition = `0 0, ${borderWidth}px ${borderWidth}px`;
+                    innerShadow.style.maskPosition = `0 0, ${borderWidth}px ${borderWidth}px`;
+                    innerShadow.style.webkitMaskSize = `100% 100%, ${innerWidth}px ${innerHeight}px`;
+                    innerShadow.style.maskSize = `100% 100%, ${innerWidth}px ${innerHeight}px`;
+                    innerShadow.style.webkitMaskRepeat = "no-repeat";
+                    innerShadow.style.maskRepeat = "no-repeat";
+                    innerShadow.style.webkitMaskComposite = "xor";
+                    innerShadow.style.maskComposite = "exclude";
+                };
+
+                applyInnerShadowMask();
+                const resizeObserver = new ResizeObserver(applyInnerShadowMask);
+                resizeObserver.observe(innerShadow);
+            }
+
+            // Bezel overlay: squircle ring mask (outer 49px, inner 40px)
+            const bezelOverlay = document.querySelector(".phone-bezel-overlay");
+            if (bezelOverlay) {
+                const applySquircleMask = () => {
+                    const width = bezelOverlay.clientWidth;
+                    const height = bezelOverlay.clientHeight;
+                    const outerRadius = 49;
+                    const borderWidth = 9;
+                    const innerRadius = outerRadius - borderWidth;
+                    const innerWidth = width - borderWidth * 2;
+                    const innerHeight = height - borderWidth * 2;
+
+                    // Generate outer squircle path
+                    const outerPath = getSvgPath({
+                        width,
+                        height,
+                        cornerRadius: outerRadius,
+                        cornerSmoothing: 0.6,
+                    });
+
+                    // Generate inner squircle path
+                    const innerPath = getSvgPath({
+                        width: innerWidth,
+                        height: innerHeight,
+                        cornerRadius: innerRadius,
+                        cornerSmoothing: 0.6,
+                    });
+
+                    // Create SVGs for mask
+                    const outerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><path d="${outerPath}" fill="white"/></svg>`;
+                    const innerSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${innerWidth}" height="${innerHeight}"><path d="${innerPath}" fill="white"/></svg>`;
+
+                    // Apply as XOR mask to create ring shape
+                    const outerUrl = `url("data:image/svg+xml,${encodeURIComponent(outerSvg)}")`;
+                    const innerUrl = `url("data:image/svg+xml,${encodeURIComponent(innerSvg)}")`;
+
+                    bezelOverlay.style.webkitMaskImage = `${outerUrl}, ${innerUrl}`;
+                    bezelOverlay.style.maskImage = `${outerUrl}, ${innerUrl}`;
+                    bezelOverlay.style.webkitMaskPosition = `0 0, ${borderWidth}px ${borderWidth}px`;
+                    bezelOverlay.style.maskPosition = `0 0, ${borderWidth}px ${borderWidth}px`;
+                    bezelOverlay.style.webkitMaskSize = `100% 100%, ${innerWidth}px ${innerHeight}px`;
+                    bezelOverlay.style.maskSize = `100% 100%, ${innerWidth}px ${innerHeight}px`;
+                    bezelOverlay.style.webkitMaskRepeat = "no-repeat";
+                    bezelOverlay.style.maskRepeat = "no-repeat";
+                    bezelOverlay.style.webkitMaskComposite = "xor";
+                    bezelOverlay.style.maskComposite = "exclude";
+                };
+
+                // Apply initially and on resize
+                applySquircleMask();
+                const resizeObserver = new ResizeObserver(applySquircleMask);
+                resizeObserver.observe(bezelOverlay);
+            }
+
+            // Phone screen & sheet-bg: 40px radius (49 - 9 padding = concentric)
+            const phoneScreen = document.querySelector(".phone-screen");
+            const sheetBg = document.querySelector(".sheet-bg");
+            if (phoneScreen)
+                squircleObserver(phoneScreen, { cornerRadius: 40 });
+            if (sheetBg) squircleObserver(sheetBg, { cornerRadius: 40 });
+
+            // Video sheets: 40px radius
+            document.querySelectorAll(".video-sheet").forEach((el) => {
+                squircleObserver(el, { cornerRadius: 40 });
+            });
+
+            // Dynamic island: pill shape (half of height)
+            const dynamicIsland = document.querySelector(".dynamic-island");
+            if (dynamicIsland)
+                squircleObserver(dynamicIsland, { cornerRadius: 13 });
+
+            // App icons in folders: 12px radius
+            // Expose globally for dynamic folder icons
+            window.applyFolderIconSquircles = () => {
+                document.querySelectorAll(".folder-app-icon").forEach((el) => {
+                    if (!el.dataset.squircled) {
+                        squircleObserver(el, { cornerRadius: 12 });
+                        el.dataset.squircled = "true";
+                    }
+                });
+            };
+            window.applyFolderIconSquircles();
+
+            // QR code: 20px radius
+            document.querySelectorAll(".qr-code").forEach((el) => {
+                squircleObserver(el, { cornerRadius: 0 });
+            });
+        </script>
+    </body>
+</html>

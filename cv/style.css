@@ -1,0 +1,251 @@
+/*
+ * One US Letter page (8.5 x 11in = 612 x 792pt).
+ * The Figma frame is 612x792, so Figma px map 1:1 to CSS pt here.
+ */
+@font-face {
+    font-family: "Geist Serif";
+    src: url("/assets/fonts/GeistSerifVF.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: block;
+}
+
+/* Inter 4.1, self-hosted from rsms.me/inter */
+/* Libre Caslon Condensed (OFL), self-hosted from github.com/ertekinno/libre-caslon-condensed */
+@font-face {
+    font-family: "Libre Caslon Condensed";
+    src: url("/assets/fonts/LibreCaslonCondensed-VF.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Libre Caslon Condensed";
+    src: url("/assets/fonts/LibreCaslonCondensed-Italic-VF.woff2") format("woff2");
+    font-weight: 400 700;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: InterVariable;
+    src: url("/assets/fonts/InterVariable.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: block;
+}
+
+/*
+ * Gerstner Programm is a trial font installed on this Mac (Forgotten Shapes).
+ * Loaded via local() only, so the file is not in the repo or deployed;
+ * anyone without it installed falls back to Inter.
+ */
+@font-face {
+    font-family: "Gerstner Programm";
+    src: local("GerstnerProgrammFSL-Regular"), local("Gerstner Programm FSL Regular");
+    font-weight: 400;
+}
+
+@page {
+    size: letter;
+    margin: 0;
+}
+
+:root {
+    --ink: #000;
+    --body: #3d3d3d;
+    --muted: #707070;
+    --rule: #dcdcdc;
+    --paper: #fff;
+    --desk: #ececec;
+    /* Spacing (all tunable from the localhost DialKit panel) */
+    --margin: 30pt; /* page edge */
+    --side: 100pt; /* dates column width */
+    --gap: 14pt; /* dates column to content */
+    --header-pad: 14pt; /* header text to rule */
+    --header-gap: 20pt; /* rule to first role */
+    --contact-gap: 16pt; /* between contact items */
+    --role-gap: 15pt; /* between roles */
+    --title-gap: 2pt; /* title to the text under it */
+    --lede-gap: 8pt; /* intro paragraph to item list */
+    --item-gap: 3pt; /* between items */
+    --label-gap: 4pt; /* label to its description */
+    --line: 13pt;
+    --serif-font: "Geist Serif"; /* "Geist Serif" or "Libre Caslon Condensed" */
+    --serif-weight: 400; /* Caslon 400-700; Geist Serif has one weight */
+    --size: 9.5pt; /* serif: dates, titles, labels */
+    --serif-tracking: 0.01em;
+    --serif-numeric: lining-nums proportional-nums;
+    --serif-features: normal; /* ss01 alt a/k/R, ss05 transitional rounds */
+    --serif-shape: 0; /* ELSH axis: 0 round dots, 25 square, 50 triangle, 100 heart */
+    --sans-size: 9.25pt; /* Gerstner reads smaller than Geist Serif at the same size */
+    --sans-tracking: 0.01em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    margin: 0;
+    padding: 40px 16px;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--serif-font), Georgia, serif;
+    font-weight: var(--serif-weight);
+    font-size: var(--size);
+    line-height: var(--line);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: var(--serif-tracking);
+    font-variant-numeric: var(--serif-numeric);
+    font-feature-settings: var(--serif-features);
+    font-variation-settings: "ELSH" var(--serif-shape);
+}
+
+.page {
+    width: 8.5in;
+    height: 11in;
+    margin: 0 auto;
+    padding: var(--margin);
+    background: var(--paper);
+    box-shadow:
+        0 1px 2px rgb(0 0 0 / 0.06),
+        0 8px 32px rgb(0 0 0 / 0.08);
+    overflow: hidden;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: var(--side) 1fr;
+    column-gap: var(--gap);
+}
+
+h1,
+h2,
+p,
+ul {
+    margin: 0;
+}
+
+/* Geist Serif ships a single weight for now: hierarchy comes from size and tone */
+h1,
+h2,
+b {
+    font-size: inherit;
+    font-weight: var(--serif-weight);
+    font-synthesis: none;
+    color: var(--ink);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: var(--header-pad);
+    margin-bottom: var(--header-gap);
+    border-bottom: 0.5pt solid var(--rule);
+}
+
+.contact {
+    display: flex;
+    gap: var(--contact-gap);
+    padding: 0;
+    list-style: none;
+}
+
+.lede a,
+.items a {
+    text-decoration: underline;
+    text-decoration-thickness: 0.5pt;
+    text-underline-offset: 1.5pt;
+    text-decoration-color: var(--muted);
+}
+
+/* Roles */
+.role + .role {
+    margin-top: var(--role-gap);
+}
+
+.lede,
+h2 + .items {
+    margin-top: var(--title-gap);
+}
+
+/* Descriptions in Gerstner; dates, titles, and labels stay in Geist Serif */
+.lede,
+.items {
+    color: var(--body);
+    font-family: "Gerstner Programm", InterVariable, system-ui, sans-serif;
+    font-weight: 400;
+    font-size: var(--sans-size);
+    letter-spacing: var(--sans-tracking);
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-variant-numeric: normal; /* Inter tnum widens hyphens */
+}
+
+.items b {
+    font-family: var(--serif-font), Georgia, serif;
+    font-size: var(--size);
+    letter-spacing: var(--serif-tracking);
+    font-variant-numeric: var(--serif-numeric);
+    font-feature-settings: var(--serif-features);
+    font-variation-settings: "ELSH" var(--serif-shape);
+    margin-right: var(--label-gap);
+}
+
+.items {
+    padding: 0;
+    list-style: none;
+}
+
+.lede + .items {
+    margin-top: var(--lede-gap);
+}
+
+.items li + li {
+    margin-top: var(--item-gap);
+}
+
+/* Localhost edit mode */
+.page.editing {
+    outline: 1px dashed var(--muted);
+    outline-offset: 4px;
+}
+.page[contenteditable="true"]:focus {
+    outline-style: dashed;
+}
+
+/* Localhost tuning: flag when content runs past the page */
+.page.overflowing {
+    outline: 2px solid #e5484d;
+    outline-offset: 4px;
+}
+
+@media print {
+    .dialkit-root {
+        display: none !important;
+    }
+    body {
+        padding: 0;
+        background: none;
+    }
+    .page {
+        margin: 0;
+        box-shadow: none;
+    }
+}

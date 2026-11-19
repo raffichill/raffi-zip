@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "live-server"
+    "dev": "node cv/dev/save-server.mjs & live-server --port=5050 --no-browser"
   },
   "devDependencies": {
     "live-server": "^1.2.2"

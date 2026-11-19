@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Raffi Chilingaryan · CV</title>
+        <link rel="icon" type="image/png" href="/assets/favicon.png" />
+        <link rel="preload" href="/assets/fonts/GeistSerifVF.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="stylesheet" href="/cv/style.css" />
+    </head>
+    <body>
+        <main class="page">
+            <header class="header">
+                <h1>Raffi Chilingaryan</h1>
+                <ul class="contact">
+                    <li>Chicago, IL</li>
+                    <li><a href="mailto:raffi.chilingaryan@gmail.com">raffi.chilingaryan@gmail.com</a></li>
+                    <li><a href="tel:+18573313623">857-331-3623</a></li>
+                    <li><a href="https://raffi.zip">raffi.zip</a></li>
+                </ul>
+            </header>
+
+            <section class="row role">
+                <p class="side muted">Jul 2024 – Present</p>
+                <div class="main">
+                    <h2>Founder, Spotted in Prod</h2>
+                    <p class="lede">
+                        Full-stack design and development of
+                        <a href="https://www.spottedinprod.com">spottedinprod.com</a>, a community of iOS product
+                        designers.
+                    </p>
+                    <ul class="items">
+                        <li><b>Business</b> 22,000+ user accounts, 1,000 paying users, and $120k in revenue over 18 months</li>
+                        <li><b>Reach</b> 1M website pageviews; grew X and Threads to 50k+ followers and 20M+ impressions</li>
+                        <li><b>iOS</b> Shipped the iOS client in 60 days; holding a 5.0 star rating through 1,000 downloads to date</li>
+                        <li>
+                            <b>Jobs</b> Sold <a href="https://www.spottedinprod.com/jobs">job board</a> listings to
+                            Anthropic, Perplexity, Cosmos, Locket, Polymarket, Revolut, Shop, and others
+                        </li>
+                        <li>
+                            <b>Microsites</b> <a href="https://www.spottedinprod.com/setups">Setups</a>, an infinite
+                            canvas of home screens uploaded by members, and
+                            <a href="https://www.spottedinprod.com/spotlight">Spotlight</a>, an interview series on
+                            how mobile product designers think
+                        </li>
+                        <li>
+                            <b>Launch</b> Choreographed and produced a
+                            <a href="https://www.spottedinprod.com/pursue-excellence">53 second launch video</a> for
+                            the iOS and leaderboard release
+                        </li>
+                        <li><b>Admin</b> Design and maintain the dashboard behind recommendations, quality control, and contributor applications</li>
+                        <li><b>Team</b> Recruited and managed fractional designers and engineers across the web client, API, design system, and launch videos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="row role">
+                <p class="side muted">Nov 2024 – Apr 2025</p>
+                <div class="main">
+                    <h2>Senior Product Designer, Shopify</h2>
+                    <p class="lede">Prototyped and shipped exploratory Shop Minis:</p>
+                    <ul class="items">
+                        <li><b>AR furniture explorer</b> Prototypes, handoff, and merged PRs to production</li>
+                        <li><b>Color seasons stylist</b> Prototypes and handoff</li>
+                        <li><b>Shopping trivia</b> Prototypes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="row role">
+                <p class="side muted">Jul 2021 – Jul 2024</p>
+                <div class="main">
+                    <h2>Founder, Light Nudge Engineering</h2>
+                    <p class="lede">Launched four health and fitness apps, all rated 4.8 stars or higher.</p>
+                    <ul class="items">
+                        <li><b>Runbuds</b> Social running app with friends’ weekly progress on a track; led design, recruited and art directed 3 contributors</li>
+                        <li><b>Empty</b> Intermittent fasting tracker, 8,000 downloads</li>
+                        <li><b>Steddy</b> Routine planner</li>
+                        <li><b>Numbies</b> Live workouts with friends</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="row role">
+                <p class="side muted">Jan 2018 – Jul 2021</p>
+                <div class="main">
+                    <h2>Analyst, Industrial Economics, Inc.</h2>
+                    <ul class="items">
+                        <li>Modeled economic impacts of improved grid resiliency for the state of New York</li>
+                        <li>Modeled net benefits of federal tobacco and vaping product regulation</li>
+                        <li>Conducted financial health audits to support multimillion-dollar corporate litigation</li>
+                        <li>Launched the firm’s career mentorship program</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="row role">
+                <p class="side muted">Other</p>
+                <div class="main">
+                    <ul class="items">
+                        <li><b>FloatyDo</b> Offline-first punch list synced across macOS and iOS, with a Live Activity focus timer</li>
+                        <li><b>Consulting</b> Product design for Angles, Superpower, Househunt, and Margins</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="row role">
+                <p class="side muted">Press</p>
+                <div class="main">
+                    <ul class="items">
+                        <li><b>The Verge</b> Featured my personal website</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <script>
+            // DialKit tuning panel, localhost only (files live in cv/dev, which isn't deployed)
+            if (["localhost", "127.0.0.1"].includes(location.hostname)) {
+                const css = document.createElement("link");
+                css.rel = "stylesheet";
+                css.href = "/cv/dev/dialkit/styles.css";
+                document.head.append(css);
+                const lib = document.createElement("script");
+                lib.src = "/cv/dev/dialkit/browser.global.js";
+                lib.onload = () => {
+                    const tune = document.createElement("script");
+                    tune.src = "/cv/dev/tune.js";
+                    document.body.append(tune);
+                };
+                document.body.append(lib);
+            }
+        </script>
+    </body>
+</html>
