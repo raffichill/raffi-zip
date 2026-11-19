@@ -101,22 +101,35 @@
         page.classList.toggle("overflowing", last.getBoundingClientRect().bottom > limit + 0.5);
     };
 
-    // Saves any unsaved edits and prints the saved page to ~/Downloads in one request.
+    // Download PDF: a normal browser download (lands in Downloads). Unsaved edits are
+    // saved first; that save reloads the page, so the download resumes after the reload.
+    const PDF_PENDING = "cv-pdf-pending";
     async function downloadPdf() {
+        if (dirty || stylesChanged) {
+            sessionStorage.setItem(PDF_PENDING, "1");
+            if (!(await save())) sessionStorage.removeItem(PDF_PENDING);
+            return;
+        }
         renderStatus("Making PDF…");
         try {
-            const res = await fetch("http://127.0.0.1:5051/pdf", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dirty || stylesChanged ? { html: cleanHtml(), vars: applied } : {}),
-            });
+            const res = await fetch("http://127.0.0.1:5051/pdf", { method: "POST" });
             if (!res.ok) throw new Error(await res.text());
-            dirty = stylesChanged = false;
-            renderStatus("PDF saved to Downloads");
+            const url = URL.createObjectURL(await res.blob());
+            const link = Object.assign(document.createElement("a"), {
+                href: url,
+                download: "Raffi Chilingaryan Resume.pdf",
+            });
+            link.click();
+            setTimeout(() => URL.revokeObjectURL(url), 10000);
+            renderStatus("PDF downloaded");
         } catch (error) {
             renderStatus();
             alert("Couldn't make the PDF. Is `node cv/dev/save-server.mjs` running?\n\n" + error.message);
         }
+    }
+    if (sessionStorage.getItem(PDF_PENDING)) {
+        sessionStorage.removeItem(PDF_PENDING);
+        document.fonts.ready.then(downloadPdf);
     }
 
     // A clean copy of the page: no edit-mode controls or attributes.
