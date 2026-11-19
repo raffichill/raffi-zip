@@ -65,10 +65,10 @@
     --header-gap: 20pt; /* rule to first role */
     --contact-gap: 10pt; /* between contact items */
     --role-gap: 14pt; /* between roles */
-    --title-gap: 8pt; /* title to the text under it */
+    --title-gap: 7.5pt; /* title to the text under it */
     --lede-gap: 8pt; /* intro paragraph to item list */
     --item-gap: 4pt; /* between items */
-    --label-gap: 2pt; /* label to its description */
+    --label-gap: 1pt; /* label to its description */
     --line: 13.5pt;
     --serif-font: "Geist Serif"; /* or "Libre Caslon Condensed", or "Test Untitled Serif VF", "Test Untitled Serif" */
     --serif-weight: 450; /* Caslon 400-700; Geist Serif has one weight */
@@ -169,6 +169,7 @@ a {
     list-style: none;
 }
 
+h2 a,
 .lede a,
 .items a {
     text-decoration: underline;
