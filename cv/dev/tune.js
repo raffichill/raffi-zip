@@ -102,7 +102,14 @@
     };
 
     async function save() {
-        const html = page.innerHTML.replace(/ contenteditable="[^"]*"/g, "");
+        // Save a clean copy: no edit-mode controls or attributes.
+        const clean = page.cloneNode(true);
+        clean.querySelectorAll(".cv-dev-ctl").forEach((el) => el.remove());
+        clean.querySelectorAll("[draggable]").forEach((el) => el.removeAttribute("draggable"));
+        clean.querySelectorAll(".dragging, .drop-before, .drop-after").forEach((el) =>
+            el.classList.remove("dragging", "drop-before", "drop-after"),
+        );
+        const html = clean.innerHTML.replace(/ contenteditable="[^"]*"/g, "").replace(/ class=""/g, "");
         try {
             const res = await fetch("http://127.0.0.1:5051/save", {
                 method: "POST",
@@ -146,12 +153,33 @@
             background: #f0f0f0; color: #111; cursor: pointer;
         }
         .cv-dev-bar button.primary { background: #111; color: #fff; }
+        .cv-dev-bar button[hidden] { display: none; }
+
+        /* Section controls, edit mode only */
+        .page section { position: relative; }
+        .cv-dev-ctl {
+            position: absolute; top: -2px; left: -26px; display: none;
+            flex-direction: column; gap: 2px; user-select: none;
+        }
+        .page.editing section:hover > .cv-dev-ctl { display: flex; }
+        .cv-dev-ctl button {
+            width: 20px; height: 20px; padding: 0; border: 0; border-radius: 5px;
+            background: #fff; box-shadow: 0 0 0 1px rgb(0 0 0 / .12);
+            font: 13px/20px system-ui, sans-serif; letter-spacing: 0; color: #666; cursor: pointer;
+        }
+        .cv-dev-ctl .grip { cursor: grab; }
+        .cv-dev-ctl .delete:hover { color: #c4320a; }
+        .page section.dragging { opacity: .35; }
+        .page section.drop-before { box-shadow: 0 -2px 0 #2f6fed; }
+        .page section.drop-after { box-shadow: 0 2px 0 #2f6fed; }
+        @media print { .cv-dev-ctl { display: none !important; } }
         @media print { .cv-dev-bar { display: none !important; } }`;
     document.head.append(barStyle);
     const bar = document.createElement("div");
     bar.className = "cv-dev-bar";
     bar.innerHTML = `
         <span class="cv-dev-status"></span>
+        <button type="button" data-act="undo" hidden>Undo delete</button>
         <button type="button" data-act="print">Print</button>
         <button type="button" data-act="save" class="primary">Save to files</button>`;
     document.body.append(bar);
@@ -160,6 +188,7 @@
         const act = event.target.closest("button")?.dataset.act;
         if (act === "save") save();
         if (act === "print") window.print();
+        if (act === "undo") undoDelete();
     });
     function renderStatus(message) {
         const unsaved = dirty || stylesChanged;
@@ -180,6 +209,81 @@
             save();
         }
     });
+
+    // Edit mode: drag sections by their ⠿ handle, delete with ×. Deletes can be undone until reload.
+    const deleted = [];
+    const undoButton = bar.querySelector('[data-act="undo"]');
+    const markChanged = () => {
+        dirty = true;
+        renderStatus();
+    };
+    function addControls(section) {
+        if (section.querySelector(":scope > .cv-dev-ctl")) return;
+        const ctl = document.createElement("div");
+        ctl.className = "cv-dev-ctl";
+        ctl.contentEditable = "false";
+        ctl.innerHTML = `<button type="button" class="grip" title="Drag to reorder">⠿</button>
+            <button type="button" class="delete" title="Delete section">×</button>`;
+        section.prepend(ctl);
+    }
+    page.querySelectorAll("section").forEach(addControls);
+
+    // Pointer-based drag (HTML5 drag and drop is unreliable inside contenteditable).
+    let dragged = null;
+    let dropTarget = null;
+    const clearMarks = () =>
+        page.querySelectorAll(".drop-before, .drop-after").forEach((el) => el.classList.remove("drop-before", "drop-after"));
+    page.addEventListener("pointerdown", (event) => {
+        const grip = event.target.closest(".cv-dev-ctl .grip");
+        if (!grip) return;
+        event.preventDefault();
+        dragged = grip.closest("section");
+        dragged.classList.add("dragging");
+        grip.setPointerCapture(event.pointerId);
+    });
+    page.addEventListener("pointermove", (event) => {
+        if (!dragged) return;
+        clearMarks();
+        dropTarget = null;
+        for (const section of page.querySelectorAll("section")) {
+            const { top, bottom } = section.getBoundingClientRect();
+            if (event.clientY < top || event.clientY > bottom || section === dragged) continue;
+            const before = event.clientY < (top + bottom) / 2;
+            section.classList.add(before ? "drop-before" : "drop-after");
+            dropTarget = { section, before };
+        }
+    });
+    const endDrag = () => {
+        if (!dragged) return;
+        if (dropTarget) {
+            const { section, before } = dropTarget;
+            before ? section.before(dragged) : section.after(dragged);
+            markChanged();
+            requestAnimationFrame(checkFit);
+        }
+        dragged.classList.remove("dragging");
+        clearMarks();
+        dragged = dropTarget = null;
+    };
+    page.addEventListener("pointerup", endDrag);
+    page.addEventListener("pointercancel", endDrag);
+    page.addEventListener("click", (event) => {
+        const del = event.target.closest(".cv-dev-ctl .delete");
+        if (!del) return;
+        const section = del.closest("section");
+        deleted.push({ section, next: section.nextElementSibling, parent: section.parentElement });
+        section.remove();
+        undoButton.hidden = false;
+        markChanged();
+        requestAnimationFrame(checkFit);
+    });
+    function undoDelete() {
+        const last = deleted.pop();
+        if (!last) return;
+        last.parent.insertBefore(last.section, last.next);
+        undoButton.hidden = deleted.length === 0;
+        requestAnimationFrame(checkFit);
+    }
 
     kit.subscribe(({ editText, serif, sans, lineHeight, spacing: space }) => {
         page.contentEditable = editText ? "true" : "false";
