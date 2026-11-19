@@ -60,24 +60,24 @@
     /* Spacing (all tunable from the localhost DialKit panel) */
     --margin: 30pt; /* page edge */
     --side: 100pt; /* dates column width */
-    --gap: 14pt; /* dates column to content */
-    --header-pad: 14pt; /* header text to rule */
+    --gap: 12pt; /* dates column to content */
+    --header-pad: 12pt; /* header text to rule */
     --header-gap: 20pt; /* rule to first role */
-    --contact-gap: 16pt; /* between contact items */
-    --role-gap: 15pt; /* between roles */
-    --title-gap: 2pt; /* title to the text under it */
-    --lede-gap: 8pt; /* intro paragraph to item list */
-    --item-gap: 3pt; /* between items */
+    --contact-gap: 14pt; /* between contact items */
+    --role-gap: 20pt; /* between roles */
+    --title-gap: 6pt; /* title to the text under it */
+    --lede-gap: 6pt; /* intro paragraph to item list */
+    --item-gap: 4pt; /* between items */
     --label-gap: 4pt; /* label to its description */
     --line: 13pt;
     --serif-font: "Geist Serif"; /* "Geist Serif" or "Libre Caslon Condensed" */
     --serif-weight: 400; /* Caslon 400-700; Geist Serif has one weight */
     --size: 9.5pt; /* serif: dates, titles, labels */
     --serif-tracking: 0.01em;
-    --serif-numeric: lining-nums proportional-nums;
-    --serif-features: normal; /* ss01 alt a/k/R, ss05 transitional rounds */
+    --serif-numeric: lining-nums tabular-nums;
+    --serif-features: "ss05"; /* ss01 alt a/k/R, ss05 transitional rounds */
     --serif-shape: 0; /* ELSH axis: 0 round dots, 25 square, 50 triangle, 100 heart */
-    --sans-size: 9.25pt; /* Gerstner reads smaller than Geist Serif at the same size */
+    --sans-size: 9.5pt; /* Gerstner reads smaller than Geist Serif at the same size */
     --sans-tracking: 0.01em;
 }
 
