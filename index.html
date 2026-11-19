@@ -31,12 +31,21 @@
                 gap: 0 16px;
                 margin-top: 16px;
             }
-            nav a {
+            nav a,
+            footer a {
                 color: inherit;
                 text-decoration: underline;
                 text-decoration-thickness: 1px;
                 text-underline-offset: 3px;
                 text-decoration-color: #999;
+            }
+            footer {
+                position: fixed;
+                left: 32px;
+                bottom: 32px;
+            }
+            footer a {
+                margin-right: 16px;
             }
             /* The 2025 site is a desktop-only concept */
             @media (max-width: 767px), (pointer: coarse) {
@@ -54,6 +63,10 @@
             <a href="https://apps.apple.com/us/app/floatydo/id6760775568">FloatyDo</a>
             <a href="/2025" class="desktop-only">2025</a>
         </nav>
+        <footer>
+            <a href="https://x.com/raffichill">X</a>
+            <a href="https://www.are.na/raffi">Are.na</a>
+        </footer>
         <script>
             // iPhone/iPad visitors go straight to the App Store; everyone else gets the landing page.
             const isIOS =
