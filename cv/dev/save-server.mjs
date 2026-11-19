@@ -4,6 +4,10 @@
 import { createServer } from "node:http";
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { execFile } from "node:child_process";
+import { homedir, tmpdir } from "node:os";
+import { join } from "node:path";
+import { promisify } from "node:util";
 
 const HTML = fileURLToPath(new URL("../index.html", import.meta.url));
 const CSS = fileURLToPath(new URL("../style.css", import.meta.url));
@@ -12,6 +16,24 @@ const CLOSE = "</main>";
 const ALLOWED = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
 const VAR_NAME = /^--[a-z0-9-]+$/;
 const SAFE_VALUE = /^[\w\s".,%+-]+$/; // numbers, units, quoted family names, keyword lists
+
+// Print the saved page to a Letter PDF in ~/Downloads with headless Chrome.
+const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+const PDF_PATH = join(homedir(), "Downloads", "Raffi Chilingaryan Resume.pdf");
+async function savePdf(pageUrl) {
+    await promisify(execFile)(CHROME, [
+        "--headless",
+        "--disable-gpu",
+        "--no-pdf-header-footer",
+        "--virtual-time-budget=4000", // let fonts load before printing
+        `--user-data-dir=${join(tmpdir(), "cv-pdf-chrome")}`,
+        `--print-to-pdf=${PDF_PATH}`,
+        pageUrl,
+    ]);
+    // The page may reload after a save, so confirm with a macOS notification too.
+    execFile("osascript", ["-e", 'display notification "Saved to Downloads" with title "Resume PDF"']);
+    return PDF_PATH;
+}
 
 async function saveHtml(html) {
     const source = await readFile(HTML, "utf8");
@@ -44,6 +66,21 @@ createServer(async (req, res) => {
         res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     }
     if (req.method === "OPTIONS") return res.end();
+    if (req.method === "POST" && req.url === "/pdf" && ALLOWED.test(origin)) {
+        try {
+            // Optional {html, vars} body: save unsaved edits first, in the same request,
+            // so a live-reload triggered by the save can't cancel the PDF.
+            let body = "";
+            for await (const chunk of req) body += chunk;
+            const { html, vars } = body ? JSON.parse(body) : {};
+            if (vars) await saveVars(vars);
+            if (typeof html === "string") await saveHtml(html);
+            return res.end(await savePdf(`${origin}/cv/`));
+        } catch (error) {
+            res.statusCode = 500;
+            return res.end(String(error));
+        }
+    }
     if (req.method !== "POST" || req.url !== "/save" || !ALLOWED.test(origin)) {
         res.statusCode = 404;
         return res.end();

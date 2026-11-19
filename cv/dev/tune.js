@@ -101,15 +101,37 @@
         page.classList.toggle("overflowing", last.getBoundingClientRect().bottom > limit + 0.5);
     };
 
-    async function save() {
-        // Save a clean copy: no edit-mode controls or attributes.
+    // Saves any unsaved edits and prints the saved page to ~/Downloads in one request.
+    async function downloadPdf() {
+        renderStatus("Making PDF…");
+        try {
+            const res = await fetch("http://127.0.0.1:5051/pdf", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dirty || stylesChanged ? { html: cleanHtml(), vars: applied } : {}),
+            });
+            if (!res.ok) throw new Error(await res.text());
+            dirty = stylesChanged = false;
+            renderStatus("PDF saved to Downloads");
+        } catch (error) {
+            renderStatus();
+            alert("Couldn't make the PDF. Is `node cv/dev/save-server.mjs` running?\n\n" + error.message);
+        }
+    }
+
+    // A clean copy of the page: no edit-mode controls or attributes.
+    function cleanHtml() {
         const clean = page.cloneNode(true);
         clean.querySelectorAll(".cv-dev-ctl").forEach((el) => el.remove());
         clean.querySelectorAll("[draggable]").forEach((el) => el.removeAttribute("draggable"));
         clean.querySelectorAll(".dragging, .drop-before, .drop-after").forEach((el) =>
             el.classList.remove("dragging", "drop-before", "drop-after"),
         );
-        const html = clean.innerHTML.replace(/ contenteditable="[^"]*"/g, "").replace(/ class=""/g, "");
+        return clean.innerHTML.replace(/ contenteditable="[^"]*"/g, "").replace(/ class=""/g, "");
+    }
+
+    async function save() {
+        const html = cleanHtml();
         try {
             const res = await fetch("http://127.0.0.1:5051/save", {
                 method: "POST",
@@ -120,6 +142,7 @@
             dirty = false;
             stylesChanged = false;
             renderStatus("Saved");
+            return true;
         } catch (error) {
             alert("Couldn't save. Is `node cv/dev/save-server.mjs` running?\n\n" + error.message);
         }
@@ -181,6 +204,7 @@
         <span class="cv-dev-status"></span>
         <button type="button" data-act="undo" hidden>Undo delete</button>
         <button type="button" data-act="print">Print</button>
+        <button type="button" data-act="pdf">Download PDF</button>
         <button type="button" data-act="save" class="primary">Save to files</button>`;
     document.body.append(bar);
     const status = bar.querySelector(".cv-dev-status");
@@ -188,6 +212,7 @@
         const act = event.target.closest("button")?.dataset.act;
         if (act === "save") save();
         if (act === "print") window.print();
+        if (act === "pdf") downloadPdf();
         if (act === "undo") undoDelete();
     });
     function renderStatus(message) {
