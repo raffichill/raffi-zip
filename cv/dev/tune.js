@@ -17,10 +17,22 @@
         root.style.setProperty(name, value);
     };
 
-    const families = {
-        geist: '"Geist Serif"',
-        caslon: '"Libre Caslon Condensed"',
+    // Untitled (Klim) and Gerstner are trial fonts installed on this Mac only.
+    const serifFamilies = {
+        geist: ["Geist Serif", '"Geist Serif"'],
+        caslon: ["Libre Caslon Condensed", '"Libre Caslon Condensed"'],
+        untitled: ["Untitled Serif", '"Test Untitled Serif VF", "Test Untitled Serif"'],
     };
+    const sansFamilies = {
+        gerstner: ["Gerstner Programm", '"Gerstner Programm"'],
+        inter: ["Inter", "InterVariable"],
+        untitled: ["Untitled Sans", '"Test Untitled Sans VF", "Test Untitled Sans"'],
+    };
+    const familyControl = (families, current) => ({
+        type: "select",
+        options: Object.entries(families).map(([value, [label]]) => ({ value, label })),
+        default: Object.keys(families).find((k) => families[k][1] === current) ?? Object.keys(families)[0],
+    });
     const shapes = { round: 0, square: 25, triangle: 50, heart: 100 };
     const numeric = read("--serif-numeric");
     const features = read("--serif-features");
@@ -44,18 +56,9 @@
         "Type",
         {
             editText: false,
-            save: { type: "action", label: "Save text + styles to files" },
-            print: { type: "action", label: "Print / save as PDF" },
             serif: {
-                family: {
-                    type: "select",
-                    options: [
-                        { value: "geist", label: "Geist Serif" },
-                        { value: "caslon", label: "Libre Caslon Condensed" },
-                    ],
-                    default: read("--serif-font").includes("Caslon") ? "caslon" : "geist",
-                },
-                weight: [num("--serif-weight"), 400, 700, 10],
+                family: familyControl(serifFamilies, read("--serif-font")),
+                weight: [num("--serif-weight"), 300, 800, 10],
                 size: [num("--size"), 7.5, 11, 0.25],
                 tracking: [num("--serif-tracking"), -0.03, 0.06, 0.0025],
                 dots: {
@@ -77,6 +80,8 @@
                 roundLetters: features.includes("ss05"),
             },
             sans: {
+                family: familyControl(sansFamilies, read("--sans-font")),
+                weight: [num("--sans-weight"), 300, 700, 10],
                 size: [num("--sans-size"), 8, 11, 0.25],
                 tracking: [num("--sans-tracking"), -0.03, 0.06, 0.0025],
             },
@@ -85,12 +90,7 @@
                 Object.entries(spacing).map(([key, [name, min, max, step]]) => [key, [num(name), min, max, step]]),
             ),
         },
-        {
-            onAction: (action) => {
-                if (action === "save") save();
-                if (action === "print") window.print();
-            },
-        },
+        {},
     );
 
     // Outline the page in red whenever content runs past the bottom margin.
@@ -110,10 +110,63 @@
                 body: JSON.stringify({ html, vars: applied }),
             });
             if (!res.ok) throw new Error(await res.text());
+            dirty = false;
+            stylesChanged = false;
+            renderStatus("Saved");
         } catch (error) {
             alert("Couldn't save. Is `node cv/dev/save-server.mjs` running?\n\n" + error.message);
         }
     }
+
+    // Unsaved changes block reloads (live-server reloads on any file write).
+    let dirty = false; // text edited since last save
+    let stylesChanged = false; // sliders moved since last save
+    let ready = false; // ignore the subscribe call that applies the initial values
+    page.addEventListener("input", () => {
+        dirty = true;
+        renderStatus();
+    });
+    window.addEventListener("beforeunload", (event) => {
+        if (dirty || stylesChanged) event.preventDefault();
+    });
+
+    // Save / Print buttons, top left, outside the DialKit panel (hidden when printing).
+    const barStyle = document.createElement("style");
+    barStyle.textContent = `
+        .cv-dev-bar {
+            position: fixed; left: 16px; top: 16px; z-index: 1000;
+            display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 14px;
+            background: #fff; border-radius: 12px;
+            box-shadow: 0 1px 2px rgb(0 0 0 / .08), 0 8px 24px rgb(0 0 0 / .12);
+            font: 500 13px/1 system-ui, sans-serif; letter-spacing: 0; color: #555;
+        }
+        .cv-dev-bar.unsaved .cv-dev-status { color: #c4320a; }
+        .cv-dev-bar button {
+            font: inherit; border: 0; border-radius: 8px; padding: 9px 12px;
+            background: #f0f0f0; color: #111; cursor: pointer;
+        }
+        .cv-dev-bar button.primary { background: #111; color: #fff; }
+        @media print { .cv-dev-bar { display: none !important; } }`;
+    document.head.append(barStyle);
+    const bar = document.createElement("div");
+    bar.className = "cv-dev-bar";
+    bar.innerHTML = `
+        <span class="cv-dev-status"></span>
+        <button type="button" data-act="print">Print</button>
+        <button type="button" data-act="save" class="primary">Save to files</button>`;
+    document.body.append(bar);
+    const status = bar.querySelector(".cv-dev-status");
+    bar.addEventListener("click", (event) => {
+        const act = event.target.closest("button")?.dataset.act;
+        if (act === "save") save();
+        if (act === "print") window.print();
+    });
+    function renderStatus(message) {
+        const unsaved = dirty || stylesChanged;
+        bar.classList.toggle("unsaved", unsaved);
+        status.textContent = message ?? (unsaved ? "Unsaved changes" : "All saved");
+    }
+    renderStatus();
 
     // Edit mode: type directly on the page. Pastes come in as plain text.
     page.addEventListener("paste", (event) => {
@@ -132,7 +185,7 @@
         page.contentEditable = editText ? "true" : "false";
         page.classList.toggle("editing", editText);
 
-        set("--serif-font", families[serif.family]);
+        set("--serif-font", serifFamilies[serif.family][1]);
         set("--serif-weight", serif.weight);
         set("--size", serif.size + "pt");
         set("--serif-tracking", serif.tracking + "em");
@@ -146,12 +199,19 @@
         const on = [serif.altAKR && '"ss01"', serif.roundLetters && '"ss05"'].filter(Boolean);
         set("--serif-features", on.length ? on.join(", ") : "normal");
 
+        set("--sans-font", sansFamilies[sans.family][1]);
+        set("--sans-weight", sans.weight);
         set("--sans-size", sans.size + "pt");
         set("--sans-tracking", sans.tracking + "em");
         set("--line", lineHeight + "pt");
         for (const [key, [name]] of Object.entries(spacing)) set(name, space[key] + "pt");
 
         requestAnimationFrame(checkFit);
+        if (ready) {
+            stylesChanged = true;
+            renderStatus();
+        }
+        ready = true;
     });
     document.fonts.ready.then(checkFit);
 })();
